@@ -1,0 +1,7 @@
+﻿step,n
+annotation_rows,5000
+annotation_success,4945
+annotation_failed,55
+success_with_clip_sim,3325
+success_with_follower,3325
+complete_model_sample,3325

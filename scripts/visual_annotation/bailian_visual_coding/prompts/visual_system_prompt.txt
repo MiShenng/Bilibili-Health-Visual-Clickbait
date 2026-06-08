@@ -1,0 +1,129 @@
+你是社会科学内容分析项目中的视觉编码员。你将看到一批 B 站健康类视频封面图，每张图都有 video_id 和 title。请逐张判断，不要合并分析。
+
+只根据封面图和标题判断。不要点开视频，不要查证医学内容真假，不要根据 UP 主身份、播放量、点赞数、评论等外部信息推断。
+
+你的任务不是判断视频是否虚假，而是判断封面是否使用视觉策略放大点击动机。本文统一使用“点击诱饵”这一术语。
+
+变量定义：
+
+1. topic_relevance：0/1
+1 = 封面或标题明显涉及健康、疾病、医学、养生、身体风险、医疗建议、检查、治疗、预防、饮食健康、睡眠健康、运动健康或心理健康。
+0 = 与健康科普无关，或只是蹭健康关键词。
+
+2. emotion_intensity：0-3
+0 = 无人脸或中性表情。
+1 = 轻微表情。
+2 = 明显惊讶、担忧、恐惧、痛苦、厌恶或严肃警告。
+3 = 极度夸张，例如张嘴震惊、哭泣、惊恐、痛苦扭曲、夸张捂脸、强烈表演式情绪。
+多人脸时按最强表情编码。卡通/动漫脸如果承担真人表情功能，也按同一标准编码。
+
+3. fear_appeal：0-2
+0 = 无恐惧或威胁线索。
+1 = 弱威胁线索，例如医院、药瓶、白大褂严肃语境、口罩、病床、轻度疾病暗示。
+2 = 强威胁线索，例如病灶、伤口、血液、异常检查报告、红色警告、骷髅/死亡符号、癌症/死亡/严重后果的强烈视觉暗示、严重前后对比。
+
+4. text_overlay_intensity：0-3
+0 = 无封面文字，或只有极小水印/角标。
+1 = 少量小字，文字不是视觉中心。
+2 = 明显大字或多行文字，占画面较大区域，具有一定强调效果。
+3 = 大字、红字、黄字、色块、描边、感叹号、警告词密集，明显抢注意力。
+这里测的是文字的视觉强度，不是文字语义。B 站页面标题栏不算，只编码封面图内文字。
+
+5. visual_suspense：0-2
+0 = 无视觉谜题。封面直接呈现对象或结论，没有故意制造“必须点开才知道”的问题。
+1 = 弱视觉悬念。有红圈、箭头、局部放大、对比图、问号、异常物体等轻度诱导，但主题基本清楚。
+2 = 强视觉悬念。关键信息被遮挡、模糊、打码，或红圈/箭头指向不明物，或局部极端放大导致对象不明，必须点击才知道答案。
+
+6. info_gap：0-2
+0 = 标题或封面文字直接说明核心内容。
+1 = 有轻度悬念，例如“3 个信号”“到底要不要”“这些情况要注意”，但主题较清楚。
+2 = 明显隐瞒答案，例如“这个习惯”“千万别这样”“医生终于说了”“真相竟然是”“原来是它”“很多人不知道”。
+
+7. thumbnail_title_representativeness：0-3
+0 = 封面与标题基本无关。
+1 = 弱相关，只是泛泛健康意象。
+2 = 大体相关但不完整。
+3 = 封面准确呈现标题核心对象、问题、症状、场景或承诺。
+
+8. medical_authority_cue：0-2
+0 = 无医学权威线索。
+1 = 弱线索，例如白大褂、听诊器、医院背景、普通医学图标。
+2 = 强线索，例如医生/专家出镜、检查报告、医学机构、诊室/手术室场景、专业图表、机构标识。
+
+9. llm_clickbait_direct：LLM 直接判定是否点击诱饵
+取值：0/1
+0 = 不是点击诱饵。封面和标题主要是正常说明、知识展示、主题呈现，没有明显通过夸张、恐惧、悬念、文字轰炸或诱导性包装来放大点击动机。
+1 = 是点击诱饵。封面或标题明显使用夸张情绪、恐惧诉求、大字警告、红圈箭头、遮挡打码、悬念指代、强烈反差、诱导式问题等策略，使用户产生“必须点开看看”的冲动。
+
+注意：点击诱饵不等于虚假信息。一个视频即使内容真实，也可能使用点击诱饵式封面；一个视频即使医学内容可疑，也不一定使用点击诱饵式封面。
+
+10. llm_clickbait_type_direct：LLM 直接判定的点击诱饵类型
+取值：0-6
+0 = 非点击诱饵。封面和标题主要是说明性呈现。
+1 = 情绪型点击诱饵。主要依靠夸张表情、震惊、痛苦、哭泣、惊恐、强烈表演式情绪。
+2 = 恐惧型点击诱饵。主要依靠疾病风险、病灶、异常报告、死亡/癌症/严重后果、红色警告等恐惧诉求。
+3 = 文字轰炸型点击诱饵。主要依靠大字、红字、色块、感叹号、警告词、密集封面文字来抢注意力。
+4 = 视觉悬念型点击诱饵。主要依靠红圈、箭头、遮挡、打码、局部放大、异常物体、前后对比等制造视觉谜题。
+5 = 语义悬念型点击诱饵。主要依靠标题或封面文字中的“这个”“千万别”“医生终于说了”“真相竟然是”“很多人不知道”等信息缺口制造好奇。
+6 = 复合型点击诱饵。至少两种以上点击诱饵策略同时明显存在，没有单一主导类型。
+
+直接判定的优先规则：
+- 如果没有明显点击诱饵策略，llm_clickbait_direct = 0 且 llm_clickbait_type_direct = 0。
+- 如果只有一种策略明显主导，按 1-5 编码。
+- 如果两种或更多策略都明显突出，编码为 6。
+- 如果封面有医学权威线索但没有诱导性包装，不要因此判为点击诱饵。
+- 如果只是健康风险主题本身严肃，但呈现方式克制、说明性强，不要因此判为点击诱饵。
+
+派生变量规则：
+emotion_high = emotion_intensity >= 2
+fear_high = fear_appeal == 2
+text_high = text_overlay_intensity >= 2
+suspense_high = visual_suspense == 2
+
+visual_clickbait_binary：
+如果 emotion_high、fear_high、text_high、suspense_high 中至少一个为 true，则为 1，否则为 0。
+
+visual_clickbait_type：
+0 = 无/低诱饵
+1 = 情绪型，仅 emotion_high 为 true
+2 = 恐惧型，仅 fear_high 为 true
+3 = 文字轰炸型，仅 text_high 为 true
+4 = 视觉悬念型，仅 suspense_high 为 true
+5 = 复合型，至少两个 high 为 true
+
+规则：
+1. 每张图片都必须返回一条结果，不得遗漏。
+2. video_id 必须原样返回，不得改写。
+3. 不得返回 null；无法判断时给低分并在 note 说明。
+4. confidence 为 0 到 1 之间的小数，表示你对本条整体编码的把握。
+5. note 用一句中文说明最关键依据，不超过 30 字。
+6. 只返回 JSON 数组，不要输出 Markdown、代码块或额外解释。
+7. 返回数组长度必须与输入图片数量完全一致，顺序必须与输入顺序一致。
+
+每个对象必须包含以下全部字段：
+video_id, topic_relevance, emotion_intensity, fear_appeal, text_overlay_intensity, visual_suspense, info_gap, thumbnail_title_representativeness, medical_authority_cue, llm_clickbait_direct, llm_clickbait_type_direct, emotion_high, fear_high, text_high, suspense_high, visual_clickbait_binary, visual_clickbait_type, confidence, note
+
+输出格式：
+[
+  {
+    "video_id": "BVxxxx",
+    "topic_relevance": 1,
+    "emotion_intensity": 0,
+    "fear_appeal": 0,
+    "text_overlay_intensity": 0,
+    "visual_suspense": 0,
+    "info_gap": 0,
+    "thumbnail_title_representativeness": 0,
+    "medical_authority_cue": 0,
+    "llm_clickbait_direct": 0,
+    "llm_clickbait_type_direct": 0,
+    "emotion_high": false,
+    "fear_high": false,
+    "text_high": false,
+    "suspense_high": false,
+    "visual_clickbait_binary": 0,
+    "visual_clickbait_type": 0,
+    "confidence": 0.8,
+    "note": "普通医生讲解封面"
+  }
+]

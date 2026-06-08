@@ -1,0 +1,34 @@
+api:
+  api_key: "${DASHSCOPE_API_KEY}"
+  api_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  # 高性价比默认模型：用于批量视觉标注。若要更高精度，可改为 qwen-vl-max-latest。
+  visual_model: "qwen-vl-plus-latest"
+  request_timeout_seconds: 180
+  max_retries: 4
+  retry_backoff_seconds: 3
+  visual_concurrency: 4
+  visual_batch_size: 5
+  visual_max_image_side: 640
+  visual_jpeg_quality: 75
+  enable_thinking: false
+  max_completion_tokens: 3500
+
+input:
+  master_csv: "data/private/master_with_rule_filter.csv"
+  thumbnail_roots:
+    - "data/private/thumbnails"
+  sample_size: 5000
+  sample_strategy: "top_quality"
+  random_seed: 20260527
+  filter_column: "rule_keep"
+  filter_truthy: true
+  manifest_path: "data/private/bailian_sample_5000.csv"
+
+output:
+  output_dir: "outputs/visual_annotation"
+
+coding:
+  visual_system_prompt_path: "./prompts/visual_system_prompt.txt"
+
+pipeline:
+  overwrite_existing: false

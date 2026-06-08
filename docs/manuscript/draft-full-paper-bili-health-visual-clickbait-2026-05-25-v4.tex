@@ -1,0 +1,1688 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  12pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Buying Attention, Not Endorsement: Multimodal Clickbait and the
+Bifurcation of User Engagement in Health-Science Videos on
+Bilibili}\label{buying-attention-not-endorsement-multimodal-clickbait-and-the-bifurcation-of-user-engagement-in-health-science-videos-on-bilibili}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Short-video platforms have become a major entry point for public health
+information, yet the visual cues that producers attach to thumbnails
+remain undertheorized in health communication. This study examines
+whether \emph{multimodal clickbait}---the use of dramatized facial
+emotion, threat imagery, and dense text overlay on video thumbnails---is
+associated with a distinct \emph{bifurcation} of user engagement on
+Bilibili, China's largest long-form Chinese video platform. Drawing on
+curiosity-gap, threat-arousal, and signaling perspectives (Scott 2021;
+Lang 2000; Bird and Smith 2005; Donath 2007), we predict that multimodal
+clickbait increases low-cost attention (views, likes) more than
+high-cost endorsement (coins, favorites, shares), and that
+thumbnail-title representativeness moderates this gap. We test these
+predictions on a corpus of 4,562 unique health-science videos posted
+between June 2016 and May 2026, collected via Bilibili's public search
+API across 28 keywords spanning five health themes. Each video is paired
+with its locally archived thumbnail, six interaction metrics, and
+uploader-level attributes (follower count, platform verification,
+original/reposted status). Visual constructs are coded using a
+three-tier hybrid protocol: 500 thumbnails are double-blind coded by two
+trained annotators against a five-dimension codebook, the full corpus is
+processed by computer-vision (PaddleOCR, RetinaFace + FER) and a
+vision-language model (Claude Opus 4.7), and convergent validity between
+human and computational scores is established before scaling. We
+estimate negative binomial and zero-inflated negative binomial models
+with cluster-robust standard errors at the uploader level, and report
+between-uploader and within-uploader fixed-effects specifications in
+parallel. We pre-register five hypotheses (H1a--H4) and one exploratory
+three-way interaction (H5). The design is observational; we do not make
+causal claims and bound unobserved confounding using Oster δ and
+E-values. This pre-results manuscript sets out the theoretical
+motivation, measurement protocol, and analytic plan; empirical results
+will be added after pre-registration on the Open Science Framework.
+\emph{Keywords}: visual clickbait, health communication, Bilibili,
+multimodal, user engagement, computational measurement.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+A Bilibili user opening the platform's search page for ``癌症 早期信号''
+(early signals of cancer) sees a vertical stack of video thumbnails
+before reading a single full sentence of medical content. One thumbnail
+shows a physician in a white coat behind a bold yellow caption reading
+``千万别乱用，用错后果严重'' (do not misuse, the consequences are
+severe) flanked by three red exclamation marks. Another shows a small
+child crying next to an elderly man in a wheelchair, with a yellow
+caption asking strangers not to ignore them. A third shows the same
+physician set against a desktop with a clinical report, captioned only
+``糖尿病出现口干口渴 有3种情况'' (when diabetes patients experience dry
+mouth and thirst, there are three possibilities). All three appear in
+the same search result. All three are tagged as health education by
+their uploaders. Yet they ask the viewer to do very different things,
+and they are likely to be rewarded in very different ways by the
+platform's distinctive engagement architecture.
+
+Bilibili distinguishes itself from short-video competitors by retaining
+a layered, cost-graded set of user actions. Viewers can play
+(\texttt{play}), like (\texttt{like}), post a danmaku floating comment
+(\texttt{danmaku}), favorite for later retrieval (\texttt{favorites}),
+share externally (\texttt{share}), and, crucially, spend a
+platform-rationed token to ``coin'' the video (\texttt{coin}). Coins are
+scarce: every user is allotted a small daily quota and they may give at
+most one coin to any single video, so coining is an act that the
+platform's design forces users to economize. In the broader literature
+on platform engagement, this stratification is unusual. Most platforms
+collapse engagement into views, likes, comments, and shares; few build
+in an explicit, tokenized, cost-bearing form of endorsement (Lu and Shen
+2023). Bilibili therefore offers a natural empirical environment in
+which to ask whether different \emph{types} of engagement respond
+differently to the same content cue.
+
+The cue we focus on is the video thumbnail. Thumbnails are the primary
+visual signal in a feed-based platform: they appear before any video
+plays, occupy most of the user's field of view, and increasingly carry a
+high density of designed elements---facial expressions, threat imagery,
+color contrast, and overlaid text that essentially serves as a second,
+parallel headline. A growing body of work in computational communication
+treats thumbnails as standalone units of analysis (Lu and Pan 2022;
+Al-Ali and Hamzeh 2024; Limpijankit and Kender 2025; Naveed, Uzmi, and
+Qazi 2025). In journalism studies, ``clickbait'' has long denoted
+headline strategies designed to maximize click-through at potential cost
+to information quality or downstream trust (Munger 2020; Vultee et al.
+2022; Shin, DeFelice, and Kim 2025; Wang et al. 2025). We extend this
+conceptual move to the visual plane and ask: when health-science videos
+on Bilibili use multimodal clickbait cues on their thumbnails, what kind
+of user engagement do those cues actually produce?
+
+Our argument has three parts. First, we treat Bilibili's engagement
+metrics as forming a \emph{cost hierarchy}. Viewing and liking are
+low-cost actions; coining, favoriting, and external sharing impose a
+real budgetary or social cost on the user (Dong et al. 2025). Second,
+drawing on curiosity-gap theory (Scott 2021; Blom and Hansen 2015), the
+limited-capacity model of mediated message processing (Lang 2000),
+visual framing research (Powell et al. 2015; Geise and Xu 2025),
+experimental evidence that emotionally valenced images shape both
+attention and selection on social-media news (Keib et al. 2018), and the
+broader finding that clickbait headlines depress perceived credibility
+even as they raise click rates (Molyneux and Coddington 2020; Khawar and
+Boukes 2025), we expect multimodal clickbait to be more strongly
+associated with low-cost attention than with high-cost endorsement.
+Third, we expect this gap to be moderated by \emph{thumbnail--title
+representativeness}: when the thumbnail accurately previews what the
+title (and, by extension, the video) actually delivers, high-cost
+endorsement is more likely to materialize, consistent with both the
+image--text congruence literature (Li and Xie 2020; Cao, Li, and Zhang
+2025; Yoon, Yoon, and Park 2024) and eye-tracking evidence on
+safety-message attention (Klein et al. 2020).
+
+We test these predictions on 4,562 unique health-science videos posted
+on Bilibili between June 2016 and May 2026. The corpus was collected
+through the platform's public search API across 28 Chinese-language
+keywords spanning five health-content themes: general health education,
+chronic disease, oncology and screening, lifestyle, and pre-defined
+clickbait stem phrases (``medical doctor reminds you,'' ``doctors
+finally admit,'' ``this habit causes cancer''). For each video we
+collected complete API metadata, six interaction metrics, uploader-level
+attributes including follower count and platform verification, and the
+cover thumbnail itself. We code the visual constructs through a
+three-tier hybrid protocol that combines double-blind human annotation
+on a 500-thumbnail subsample, computer-vision pipelines for facial
+emotion and text-overlay geometry, and vision-language model scoring on
+the full corpus, with explicit convergent validity checks against the
+human gold standard.
+
+This study is observational and pre-results. We deliberately separate
+the design and measurement portion of the project, presented here, from
+the empirical estimation portion, which will follow Open Science
+Framework pre-registration. Our purpose in the present paper is to (a)
+lay out the theoretical case for treating visual clickbait as multimodal
+and engagement as cost-graded; (b) document a measurement protocol that
+audits hybrid human--machine coding in a way that subsequent work can
+adopt; and (c) specify in advance an analytic plan that handles the
+heavy zero inflation in the high-cost engagement variables, the
+within-uploader clustering, and the well-known limits of associational
+inference under recommender-system confounding (Lu and Pan 2021). We
+organize the paper around four research questions:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{RQ1}. To what extent do health-science videos on Bilibili use
+  multimodal clickbait cues (dramatized emotion, threat imagery, dense
+  text overlay) on their thumbnails?
+\item
+  \textbf{RQ2}. Is multimodal clickbait associated with higher low-cost
+  engagement (views, likes) than with high-cost endorsement (coins,
+  favorites, shares)?
+\item
+  \textbf{RQ3}. Does thumbnail--title representativeness moderate the
+  gap between low-cost attention and high-cost endorsement?
+\item
+  \textbf{RQ4}. Does the bifurcation pattern depend on uploader
+  verification status?
+\end{itemize}
+
+The remainder of the paper proceeds as follows. Section 2 reviews three
+literatures we draw on: visual clickbait and thumbnail design,
+image--text congruence and processing fluency, and platform-level
+engagement stratification with particular attention to Bilibili. Section
+3 develops our theoretical argument and formalizes five hypotheses.
+Section 4 describes the corpus, the codebook, the hybrid annotation
+pipeline, and the planned analysis, including a candid statement of the
+causal boundary of the design.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Literature Review}\label{literature-review}
+
+\subsubsection{2.1 From clickbait headlines to multimodal clickbait
+thumbnails}\label{from-clickbait-headlines-to-multimodal-clickbait-thumbnails}
+
+Clickbait research originated in journalism studies as an attempt to
+characterize headline strategies that withhold information in order to
+maximize click-through. Linguistic analyses of online news identified
+``forward-reference''---the use of cataphoric or deictic devices that
+promise content the reader has not yet seen---as a signature device for
+inducing anticipation (Blom and Hansen 2015). Relevance-theoretic work
+extended this account by showing that successful clickbait headlines
+exploit definite referring expressions and intensifiers to construct an
+information gap that only the click can close (Scott 2021). The
+economics of clickbait have been formalized as a strategic interaction
+between an attention-constrained reader and a revenue-constrained
+publisher, in which exaggeration is a rational response to a thin
+attention market (Munger 2020). Large-scale corpus analyses of digital
+newspaper headlines have isolated the specific linguistic
+features---signal words, length, sentiment, numeric specificity---that
+predict click-through in production environments (Kuiken et al. 2017),
+and recent comparative work has documented that online-native outlets
+use sensationalized headlines more heavily than legacy outlets, with
+engagement consequences that differ across user segments (Khawar and
+Boukes 2025). A parallel line of work in non-English settings shows that
+the same headline mechanics travel to Chinese-language local media,
+where length, question framing, and numerical claims predict clicks net
+of content (Guo et al. 2026). Empirical work in this tradition has
+further shown that clickbait headlines impose downstream costs on
+perceptions of source credibility (Molyneux and Coddington 2020), on
+subsequent attitudes toward the outlet (Vultee et al. 2022), and on
+willingness to share content; emotional framing---particularly
+rage-bait---operates differently from information-deficit framing (Shin,
+DeFelice, and Kim 2025; Xu, Laffidy, and Ellis 2023). Reader-side
+experimental work using EEG and behavioral measures finds that different
+\emph{types} of clickbait (hyperbole, insinuation, visual rhetoric,
+puzzle) elicit measurably different cognitive and affective responses
+(Wang et al. 2025). The Persuasion Knowledge Model offers a broader lens
+on why this matters: once readers recognize a persuasive intent, their
+downstream evaluations of source and content change (Isaac 2025).
+
+Two extensions of this body of work motivate the present study. The
+first is the move to non-Western, platform-native, and visually dominant
+settings. Lu and Pan, in their study of the Chinese government's
+clickbait practices, demonstrated that clickbait is not merely a tabloid
+phenomenon but a structural response to algorithmic visibility pressure
+(Lu and Pan 2021). Their follow-up work on Douyin showed that visually
+dominant short-video platforms have generated a distinctive grammar of
+attention-maximizing video features, including high brightness, warm
+color, short duration, and visual similarity to celebrity content (Lu
+and Pan 2022). Their analysis of Chinese-language fact-checking videos
+on Douyin further demonstrated that engagement and informational quality
+respond to distinct multimodal features (Lu and Shen 2023). The second
+extension is the move from text headlines to visual thumbnails. Al-Ali
+and Hamzeh, analyzing Arabic-language clickbait thumbnails on YouTube,
+showed that visual cues, overlaid text, and embedded punctuation jointly
+constitute a meaning system that the text-only clickbait literature
+systematically misses (Al-Ali and Hamzeh 2024). ThumbnailTruth, a recent
+multi-modal LLM benchmark across cultures, formalized the detection
+problem and reported that culturally diverse thumbnails resist
+single-language solutions (Naveed, Uzmi, and Qazi 2025). Limpijankit and
+Kender, using computational aesthetics, showed that systematic cultural
+differences in thumbnail design can be measured at scale (Limpijankit
+and Kender 2025). We build on these moves by treating \emph{visual
+clickbait} as multimodal: a thumbnail is clickbait not only when its
+overlaid text plays on a curiosity gap, but also when its facial
+expressions are exaggerated, its threat imagery is salient, and its text
+layer crowds out the underlying image.
+
+\subsubsection{2.2 Image--text congruence, processing fluency, and
+downstream
+engagement}\label{imagetext-congruence-processing-fluency-and-downstream-engagement}
+
+A second body of work, mostly in marketing and computational social
+science, asks how the \emph{relation} between an image and its
+accompanying text shapes user behavior. Li and Xie's analysis of branded
+social-media posts established that image content, image quality, the
+presence of human faces, and image--text matching each independently
+predict engagement (Li and Xie 2020). Subsequent work using
+deep-learning measures of image--text congruence has complicated the
+simple ``more congruence is better'' intuition. Cao, Li, and Zhang
+showed that the relationship between image--text congruence and consumer
+preference can be non-monotonic: very high congruence delivers fluency,
+very low congruence delivers surprise and elaboration, and the middle
+ground may be the least attractive (Cao, Li, and Zhang 2025). In a
+natural-language-processing reformulation, Yoon and colleagues argued
+that news-thumbnail representativeness can be measured by counterfactual
+text generation and that representativeness is a distinct construct from
+headline--image similarity (Yoon, Yoon, and Park 2024). For visually
+dominant platforms with high content volume, the question is no longer
+whether congruence matters but \emph{which engagement metric} it matters
+for. This is the empirical opening we exploit.
+
+Visual framing research has documented that images and text contribute
+non-redundantly to framing effects, with text shifting opinion and
+images shifting behavioral intention (Powell et al. 2015). Eye-tracking
+and selection experiments on social-media news further demonstrate that
+emotionally valenced images alter not only what users \emph{attend to}
+but also what they \emph{select to read} and \emph{share}, producing a
+measurable wedge between initial attention and deeper engagement (Keib
+et al. 2018). A recent systematic review of forty-five years of visual
+framing studies found that the literature has paid disproportionate
+attention to single-image stimuli and has lagged in multimodal,
+platform-native, behavioral-outcome studies (Geise and Xu 2025). The
+visual misinformation literature reaches a parallel conclusion: visual
+misleading cues are systematically understudied (Heley, Gaysynsky, and
+King 2022), and their effects on credibility and downstream behavior are
+uneven across cultural and platform contexts (A. K. C. Liu and Kuru
+2025). Eye-tracking evidence on health-safety messages specifically
+shows that mismatch between an accompanying image and the textual
+message degrades attention to and retention of the safety information
+itself (Klein et al. 2020), suggesting that representativeness is not a
+stylistic preference but a determinant of comprehension. In health
+communication more broadly, scholarly calls have urged researchers to
+move from descriptive visual analysis to outcome-oriented studies that
+connect visual features to engagement and infodemic-relevant behavior
+(King and Lazard 2020). Image-driven engagement on Twitter/X varies
+systematically with the emotional content of climate imagery (Bravo et
+al. 2025), and automated visual analysis is now a tractable empirical
+strategy for studying social-media health effects (Peng, Lock, and Salah
+2024; Araujo, Lock, and Velde 2020).
+
+\subsubsection{2.3 Platform-level engagement stratification, Bilibili,
+and
+danmaku}\label{platform-level-engagement-stratification-bilibili-and-danmaku}
+
+A third literature, focused on the Chinese-language video platform
+Bilibili and its corporate cousin Douyin, supplies our outcome side.
+Bilibili's distinctive feature is its dual register of viewer action:
+alongside the standard view--like--comment--share suite, it preserves a
+\emph{danmaku} layer of synchronously displayed comments and a
+\emph{coin} token that the platform deliberately rations. The
+fact-checking video literature has begun to take this stratification
+seriously. Lu and Shen, analyzing Chinese-language fact-checking videos
+on Douyin, distinguished engagement signals that respond to multimodal
+features from those that do not (Lu and Shen 2023). On Bilibili itself,
+Chen reported that danmaku interactions are predicted by content
+features that differ from those predicting comment volume, suggesting
+that danmaku occupies a behaviorally distinct slot in the engagement
+hierarchy (Chen 2025). Dong and colleagues developed a typology of
+danmaku ritual types (e.g., greeting, projection, evaluation) and showed
+that ritual type, not raw danmaku volume, predicts downstream digital
+engagement (Dong et al. 2025). These findings converge on a single
+methodological point: collapsing engagement into a single score loses
+theoretical information.
+
+Signaling theory, originally developed in labor economics (Spence 1973)
+and ported to online social environments by Donath (Donath 2007), offers
+a complementary lens. Costly signals are informative precisely because
+they are costly; cheap signals are common precisely because they are
+cheap (Bird and Smith 2005). Applied to Bilibili, this implies that a
+coin or a favorite carries information that a view or a like does not,
+because the user has paid a real cost (a rationed token; the marginal
+storage cost of a future-self bookmark) to issue it. The empirical
+question is whether multimodal clickbait cues, which are designed to
+maximize a cheap signal (clicks), do or do not also maximize the costly
+signal. The Persuasion Knowledge Model predicts that once viewers
+recognize persuasive intent, they will dampen costly endorsement even as
+they continue to deliver cheap engagement (Isaac 2025). We do not test
+that mechanism directly here, but it underlies our directional
+predictions.
+
+A separate strand of computational social science work documents how
+scalable, multi-modal video analysis is now feasible at the scale of
+tens of thousands of videos, but cautions that automated visual
+measurement requires explicit construct-validity audits against human
+annotation (Edelmann et al. 2020; Peng, Lock, and Salah 2024). This
+methodological consensus shapes our annotation design (Section 4).
+
+\subsubsection{2.4 What is missing}\label{what-is-missing}
+
+The clickbait, image--text congruence, and Bilibili engagement
+literatures have grown rapidly but have not yet been joined. Clickbait
+research has remained largely text-centric; the few multimodal clickbait
+studies are concentrated in English- and Arabic-language news settings
+(Al-Ali and Hamzeh 2024; Naveed, Uzmi, and Qazi 2025). Image--text
+congruence research is concentrated in branded marketing settings where
+the outcome is purchase or attitude, not the engagement-cost ladder.
+Bilibili engagement work is most developed at the danmaku layer and has
+not, to our knowledge, addressed the question of whether different
+visual cue types map differentially onto the platform's cost hierarchy.
+Health-science content, with its distinctive stakes around credibility
+and downstream behavior, has been studied for content quality but not
+for the upstream visual cues that determine whether a viewer enters the
+video at all. This study is positioned at the intersection of these
+three gaps.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Theory and Hypotheses}\label{theory-and-hypotheses}
+
+\subsubsection{3.1 A cost-graded conception of
+engagement}\label{a-cost-graded-conception-of-engagement}
+
+The general framework for our predictions is the Differential
+Susceptibility to Media Effects Model (DSMM), which holds that
+media-effect estimates depend on the interaction of dispositional,
+developmental, and social susceptibility with response states that
+mediate the effect (Valkenburg and Peter 2013). We use DSMM as a
+meta-frame: rather than predicting a single average effect of multimodal
+clickbait, we predict a \emph{patterned} effect that differs across
+engagement cost tiers because the dispositional cost of each action
+shapes which response state (cheap attention vs.~costly endorsement)
+dominates.
+
+Our theoretical starting point is that user engagement on Bilibili is
+not a single quantity but an ordered set of actions that differ in the
+cost they impose on the user. \emph{View} costs the user only the
+marginal attention required to begin a video. \emph{Like} costs the user
+a tap. \emph{Danmaku} costs the user the time and self-disclosure
+required to write and submit a public synchronous comment.
+\emph{Favorite} costs the user the marginal cognitive overhead of
+categorizing the video as worth re-watching. \emph{Share} costs the user
+a social risk: the reputational implication of recommending the video to
+an external audience. \emph{Coin}, finally, costs the user a fraction of
+a daily platform-rationed budget and is irrevocable: a coin spent here
+cannot be spent elsewhere today. We do not claim that all users perceive
+these costs identically; we claim only that the ordering is robust
+enough at the population level to motivate analytic separation.
+
+This framing draws on signaling theory's core distinction between cheap
+and costly signals (Spence 1973; Bird and Smith 2005; Donath 2007). The
+information content of a signal in equilibrium is increasing in its
+cost: cheap signals are common and uninformative; costly signals are
+rare and diagnostic. Applied to a corpus of videos, this implies that
+the same content feature can produce statistically distinct patterns in
+cheap and costly engagement, and that pooling them obscures rather than
+reveals the underlying behavior.
+
+\subsubsection{3.2 Why multimodal clickbait should buy attention but not
+endorsement}\label{why-multimodal-clickbait-should-buy-attention-but-not-endorsement}
+
+Multimodal clickbait is a content strategy that maximizes the
+probability of a click by amplifying perceptually salient cues in the
+thumbnail. We identify three such cues: \emph{emotion intensity}
+(exaggerated facial expressions, particularly fear, shock, or disgust);
+\emph{threat imagery} (medical instruments, lesions, distressed bodies,
+red warning marks); and \emph{text overlay intensity} (high-coverage,
+high-contrast captions that pre-stage a curiosity gap). Each cue is
+grounded in a distinct mechanism. The limited-capacity model of mediated
+message processing holds that high-arousal, emotionally evocative
+stimuli automatically allocate more cognitive resources to encoding,
+increasing both initial attention and subsequent message recall (Lang
+2000). Consistent with this account, emotion-laden imagery is processed
+faster than neutral imagery, emotional intensity predicts virality of
+social-media content (Bravo et al. 2025; Shin, DeFelice, and Kim 2025),
+and experimental work has documented that emotionally valenced images in
+news feeds shape attention, story selection, and downstream sharing
+intent (Keib et al. 2018). Threat imagery activates the threat-salience
+channel of fear appeals; classical health-behavior work formalizes this
+channel within the Health Belief Model, in which perceived threat
+operates jointly with perceived efficacy to produce action (Jones et al.
+2015). On social media specifically, perceived threat and perceived
+efficacy interact in a moderated-mediation path that elevates click
+intention through fear arousal but dampens it when efficacy is low
+(Zhang and Zhou 2019). Text-overlay intensity functions as a second
+headline embedded in the image, multiplying surface area for
+curiosity-gap construction (Al-Ali and Hamzeh 2024; Scott 2021).
+
+A common feature of these mechanisms is that they target the
+\emph{entry} decision---whether to click---rather than the
+\emph{post-entry} decision of whether to endorse. Reader-side clickbait
+studies are consistent with this asymmetry: clickbait headlines reliably
+increase clicks but do not reliably increase trust, sharing, or other
+downstream measures (Vultee et al. 2022; Shin, DeFelice, and Kim 2025;
+Wang et al. 2025). The Persuasion Knowledge Model gives this asymmetry a
+name: once viewers recognize that a thumbnail is engineered to maximize
+their click probability, they may continue to click while withholding
+the costly signals that would otherwise indicate endorsement (Isaac
+2025). On Bilibili, the costly signals are precisely the rationed coin
+and the future-oriented favorite and share. We therefore predict a
+bifurcation:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H1a}. \emph{Multimodal clickbait intensity is positively
+  associated with low-cost engagement (views, likes).}
+\item
+  \textbf{H1b}. \emph{Multimodal clickbait intensity is more weakly
+  associated with high-cost endorsement (coins, favorites, shares) than
+  with low-cost engagement.}
+\end{itemize}
+
+H1b is a \emph{comparative} hypothesis: it predicts that the
+standardized coefficient on the multimodal clickbait index is smaller in
+the high-cost equation than in the low-cost equation, not that it is
+zero or negative. We test it with a non-parametric bootstrap of the
+coefficient difference (Section 4.6).
+
+\subsubsection{3.3 Why information gap should be treated
+separately}\label{why-information-gap-should-be-treated-separately}
+
+In our preliminary coding (Section 4.3) and consistent with the
+curiosity-gap tradition, we distinguish \emph{information gap}---a
+property of the title's promise rather than of the thumbnail's
+image---from the three visual clickbait dimensions above. Information
+gap is the extent to which the title and the visible thumbnail caption
+deliberately withhold the punch line of the video. Examples in our
+corpus include ``this habit causes cancer'' (which kind of habit?),
+``doctors finally admit'' (admit what?), and ``if your physical exam
+shows these signs, do not ignore them'' (which signs?). Linguistic work
+on online news headlines identifies these constructions as deictic
+forward-references: the headline uses a referring expression whose
+antecedent is withheld, generating an anticipation that only the click
+can resolve (Blom and Hansen 2015; Scott 2021). Theoretically, the
+information-gap mechanism is cognitive rather than affective: it works
+by making the viewer aware of a knowledge deficit and offering the click
+as the closure. Because the gap is constructed in text, conflating it
+with image-side cues such as facial emotion would misname the construct.
+We therefore model information gap as a \emph{separate} predictor:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H1c}. \emph{Information-gap intensity is positively associated
+  with low-cost engagement and more weakly associated with high-cost
+  endorsement, in parallel to H1a--H1b.}
+\end{itemize}
+
+\subsubsection{3.4 Why thumbnail--title representativeness should
+moderate the
+gap}\label{why-thumbnailtitle-representativeness-should-moderate-the-gap}
+
+Representativeness is the property of a thumbnail that it accurately
+previews what the title---and by extension the video---is about. A
+highly representative thumbnail of a video titled ``what 3 things to
+know when diabetes patients experience dry mouth'' might display a
+doctor with a clinical report and an overlay listing three items; an
+unrepresentative thumbnail of the same video might display a generic
+stock image of a glass of water. Two literatures lead to opposing
+predictions, and the resolution is empirical.
+
+The processing-fluency tradition holds that congruent image--text pairs
+are easier to process, more credible-feeling, and more likely to convert
+attention into action (Li and Xie 2020). Eye-tracking work in health
+communication adds a behavioral mechanism: when an image and the
+accompanying message do not match, viewers' attention shifts
+inefficiently between the two modalities, and retention of the safety
+information itself is degraded (Klein et al. 2020). The
+curiosity-discrepancy tradition, by contrast, holds that mismatch
+generates surprise and elaboration that can themselves be
+conversion-enhancing under some conditions (Cao, Li, and Zhang 2025). We
+expect the fluency channel to dominate for \emph{high-cost} endorsement,
+because favoriting and coining require the viewer to make a
+forward-looking judgment about content value, and that judgment depends
+on whether the thumbnail's promise was kept. We expect
+representativeness to have a weaker association with low-cost attention,
+because attention is captured at the moment of the click, before any
+representativeness comparison can be made:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H2}. \emph{Thumbnail--title representativeness is positively
+  associated with high-cost endorsement.}
+\item
+  \textbf{H3}. \emph{The positive association between representativeness
+  and high-cost endorsement is stronger than its association with
+  low-cost engagement.}
+\end{itemize}
+
+\subsubsection{3.5 Medical authority cues and verification
+status}\label{medical-authority-cues-and-verification-status}
+
+Health-science content carries source-credibility implications that
+general clickbait research does not. A white coat, a clinical report, or
+a hospital backdrop function as visual signals of medical authority. The
+same cues, however, are routinely co-opted by misleading health content;
+recent commentary in \emph{Science Communication} has called for
+systematic research on this dual-use property of visual health
+information (Heley, Gaysynsky, and King 2022). Users themselves rely
+heavily on social and heuristic shortcuts---rather than effortful
+evaluation---when assessing online credibility, and visual authority
+cues are exactly the kind of cognitively cheap, ``good-looking'' signal
+that heuristic processing privileges (Metzger, Flanagin, and Medders
+2010). In the Chinese-language digital news environment, recent
+qualitative work documents that users articulate folk theories about
+source trustworthiness that are sensitive to platform context and to
+perceived sensationalism (S. Liu et al. 2023), reinforcing the
+expectation that visual authority cues operate differently when paired
+with high versus low clickbait intensity. The signaling-theory
+expectation is that authority cues will amplify high-cost endorsement,
+but only when they are \emph{consistent} with the underlying content;
+when authority cues coexist with high clickbait intensity, viewers may
+interpret the combination as packaging rather than credentialing,
+dampening the endorsement response (Isaac 2025). We formalize the main
+effect:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H4}. \emph{Medical authority visual cues are positively
+  associated with high-cost endorsement.}
+\end{itemize}
+
+Bilibili distinguishes uploaders by formal verification. Verified
+accounts (\texttt{is\_official\ ==\ TRUE}) include certified medical
+professionals, institutional channels, and accredited media outlets. The
+signaling and reader-side literatures both suggest that the bifurcation
+in H1 should be \emph{attenuated} among verified accounts: viewers may
+extend more trust to a verified uploader and convert clickbait-driven
+attention into high-cost endorsement more readily; or, alternatively,
+viewers may apply a stricter standard to a verified uploader and dampen
+endorsement when verified accounts use clickbait. Because both
+directions are theoretically defensible, we treat the moderation as
+exploratory:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H5 (exploratory)}. \emph{The bifurcation pattern in H1 is
+  moderated by uploader verification; we do not pre-commit to a
+  direction.}
+\end{itemize}
+
+H5 is reported in the appendix only; the primary confirmatory family is
+H1a--H4.
+
+\subsubsection{3.6 What we are not
+claiming}\label{what-we-are-not-claiming}
+
+We are not claiming a causal effect of multimodal clickbait on
+engagement. Our design is observational. Bilibili's recommender system
+constitutes a substantial unobserved confounder of both the visual cues
+that uploaders choose and the engagement that videos receive. We adopt
+three protective measures: explicit associational language throughout,
+sensitivity bounds (Oster δ and E-values) on the principal coefficients,
+and a parallel within-uploader specification that absorbs all
+time-invariant uploader characteristics, including the uploader's
+tendency to be promoted by the recommender system. We do not claim that
+even the within-uploader specification identifies a causal effect, only
+that it strengthens the associational inference by partialing out a
+large class of confounders.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Data and Methods}\label{data-and-methods}
+
+\subsubsection{4.1 Platform and corpus}\label{platform-and-corpus}
+
+Bilibili (bilibili.com) is the largest long-form Chinese-language video
+platform, founded in 2009 and best known for its synchronous danmaku
+comment layer and its tokenized ``coin'' endorsement system. Unlike its
+short-video competitors, Bilibili preserves long-form content alongside
+short videos and retains an explicit four-way action set (\texttt{like},
+\texttt{coin}, \texttt{favorite}, \texttt{share}) plus the
+floating-comment \texttt{danmaku} channel. As of the third quarter of
+2024, Bilibili reported an average of 348 million monthly active users
+(Bilibili Inc. 2024). We choose Bilibili because its engagement
+architecture, more than any other Chinese-language platform, separates
+cheap and costly user actions at the design level.
+
+We collected the corpus through the platform's public search API on May
+24, 2026. The search API returns the same ranked list that the platform
+serves to non-logged-in users entering a keyword query, with the
+additional functionality of pagination and sort-order control. For each
+of 28 Chinese-language keywords (Table 1), we issued three sort
+queries---\texttt{totalrank} (relevance), \texttt{pubdate} (recency),
+and \texttt{click} (popularity)---and crawled up to fifteen pages per
+query. Keywords were organized into five thematic clusters: general
+health education (e.g., 健康科普, 医生提醒, 体检报告; five keywords),
+chronic disease (糖尿病, 高血压, 心脏病, 脂肪肝; four keywords),
+oncology and screening (癌症 早期信号, HPV 疫苗, 肺癌 科普; three
+keywords), lifestyle (减肥 科学, 脱发 医生, 睡眠 健康, 饮食健康; four
+keywords), and pre-defined clickbait stem phrases (e.g., 医生提醒
+千万别, 医生终于说了, 这个习惯 致癌; twelve keywords including
+short-form variants). The clickbait-stem cluster was included
+deliberately to ensure adequate variation in our principal independent
+variable; we adjust for this by including keyword category fixed effects
+in all primary models and by reporting a leave-one-keyword-out
+robustness check.
+
+{[}Table 1 about here{]}
+
+For each returned video, we collected complete metadata (\texttt{bvid},
+\texttt{aid}, title, description, publication timestamp, duration,
+B-station category \texttt{tname}, original/reposted status
+\texttt{copyright}), six interaction metrics (views, likes, coins,
+favorites, shares, danmaku), uploader-level attributes (\texttt{mid},
+follower count, platform verification status, channel signature,
+uploader level), and the cover thumbnail (JPG, locally archived). After
+deduplication on \texttt{bvid}, the working corpus contains 4,562 unique
+videos from 2,731 unique uploaders (mean = 1.67 videos per uploader;
+median = 1; maximum = 47). The publication dates span June 22, 2016 to
+May 24, 2026, with 71 percent of videos published in 2024--2026. All
+interaction metrics represent a single cross-sectional snapshot taken
+within a six-hour window on May 24, 2026; we therefore introduce
+\texttt{video\_age\_days} (the number of days between publication and
+crawl) as a primary control. Thumbnail download succeeded for 4,564
+images, providing 100 percent coverage of analyzable videos.
+
+\subsubsection{4.2 Outcome variables and their
+distributions}\label{outcome-variables-and-their-distributions}
+
+We treat the six interaction metrics as an ordered set of engagement
+actions stratified by cost. The full descriptive distribution is
+reported in Table 2. Three features of the distribution are decisive for
+the modeling strategy.
+
+{[}Table 2 about here{]}
+
+First, all six outcomes are heavily right-skewed, with maxima orders of
+magnitude above their medians. Second, the rate of structural zeros
+differs sharply across outcomes: 1.3 percent for views, 5.1 percent for
+likes, 16.6 percent for favorites, 27.0 percent for shares, 30.5 percent
+for comments, 36.5 percent for coins, and 45.8 percent for danmaku.
+Third, the high-cost outcomes (coins, shares, danmaku) all exhibit
+zero-inflation rates above 25 percent, indicating that a non-trivial
+share of videos generate genuinely no costly endorsement. We accordingly
+fit negative binomial (NB) models to the low-zero outcomes (views,
+likes, favorites) and zero-inflated negative binomial (ZINB) models to
+the high-zero outcomes (coins, shares, danmaku). The inflation equation
+in the ZINB specification includes \texttt{log\_followers} and
+\texttt{video\_age\_days}, which are theoretically the variables most
+likely to predict structural absence of any endorsement.
+
+\subsubsection{4.3 Codebook for visual
+constructs}\label{codebook-for-visual-constructs}
+
+Five visual constructs are coded per thumbnail: a binary topic-relevance
+gate, three image-side clickbait dimensions, one text-side curiosity-gap
+dimension, and a four-component medical-authority composite. The
+complete codebook with operational definitions, exemplar images,
+calibration rules, and adjudication procedures is included as
+Supplementary Material
+(\texttt{Data\ process/annotation/codebook\_visual\_clickbait.md}). We
+summarize the constructs here.
+
+\textbf{Topic relevance} (binary, gate variable). Coded \texttt{1} if
+the video is recognizably a health-education attempt directed at a
+general audience, \texttt{0} otherwise. The gate excludes emotional
+appeals (e.g., medical-crowdfunding videos that use health imagery but
+are not educational), fitness routines mislabeled as health science, and
+entertainment content that uses health keywords for retrieval but does
+not deliver health information. Videos with
+\texttt{topic\_relevance\ ==\ 0} are excluded from all primary models.
+
+\textbf{Emotion intensity} (ordinal, 0--3). Codes the degree of
+exaggerated affective display on visible human faces in the thumbnail: 0
+= neutral or no face; 1 = mild expression; 2 = pronounced surprise,
+concern, or fear; 3 = extreme dramatized affect (open-mouth shock,
+exaggerated grimaces, staged crying). The construct is grounded in the
+high-arousal literature on viral content (Bravo et al. 2025; Shin,
+DeFelice, and Kim 2025).
+
+\textbf{Threat imagery} (ordinal, 0--2). Codes the salience of visual
+threat cues: 0 = none; 1 = mild medical-setting cues (white coats,
+clinical instruments, hospital backdrops) without explicit threat; 2 =
+explicit threat cues (lesions, distressed bodies, red warning marks,
+dramatic before/after images). The construct is grounded in the
+visual-misinformation literature (Heley, Gaysynsky, and King 2022; A. K.
+C. Liu and Kuru 2025) and in social-media fear-appeal research that has
+documented how perceived threat shapes click intention (Zhang and Zhou
+2019).
+
+\textbf{Text overlay intensity} (ordinal, 0--3). Codes the proportion of
+thumbnail area, font contrast, and emphasis density of overlaid text: 0
+= no overlay; 1 = minimal caption; 2 = mid-density (a single short
+caption with limited emphasis); 3 = high-density (large captions
+covering 30 percent or more of the thumbnail area, often with
+color-block backgrounds and exclamation marks). The construct is
+grounded in the multimodal clickbait literature (Al-Ali and Hamzeh 2024;
+Naveed, Uzmi, and Qazi 2025) and in evidence that image--text mismatch
+alters cross-modal attention allocation (Klein et al. 2020).
+
+\textbf{Information gap} (ordinal, 0--2). Codes the extent to which the
+title and any thumbnail caption deliberately withhold the substantive
+punch line of the video: 0 = no withholding (the title fully describes
+the content); 1 = partial withholding (the title identifies the topic
+but withholds the resolution); 2 = explicit curiosity gap (the title
+constructs a ``this thing,'' ``these signs,'' ``what really happened''
+puzzle). Operationalization follows the forward-reference and
+relevance-theoretic accounts of clickbait headlines (Blom and Hansen
+2015; Scott 2021). This construct is text-side, not image-side, and is
+modeled separately from the visual clickbait dimensions.
+
+\textbf{Medical authority cues} (4 binary items summed, 0--4). The four
+items are: presence of a white coat or scrubs; presence of clinical
+instruments (stethoscope, otoscope, syringe); presence of a clinical
+report, scan, or chart; presence of an institutional logo or identifying
+credential. The construct is grounded in source-credibility theory and
+in the visual-misinformation literature on authority signaling (Isaac
+2025; A. K. C. Liu and Kuru 2025).
+
+\subsubsection{4.4 Hybrid annotation
+pipeline}\label{hybrid-annotation-pipeline}
+
+Visual constructs are scored using a three-tier hybrid protocol that
+combines human gold-standard annotation, computer-vision feature
+extraction, and vision-language model coding. The protocol is designed
+to balance the construct-validity advantages of human coding against the
+scale advantages of automated measurement, and to make the trade-off
+legible to readers.
+
+\textbf{Tier 1: Human gold standard (N = 500).} We draw a stratified
+random subsample of 500 thumbnails from the 4,562-video corpus,
+stratifying by keyword cluster (5 strata), uploader verification (2
+strata), and the within-stratum tercile of view count (3 strata), to
+ensure that all theoretically important regions of the corpus are
+represented in the gold-standard set. Two trained annotators code each
+thumbnail on all five constructs independently and blind to each other's
+coding. Inter-rater reliability is computed as quadratic-weighted
+Cohen's κ for the four ordinal constructs and as unweighted Cohen's κ
+for the binary topic-relevance gate, with Krippendorff's α reported as a
+robustness statistic. Target IRR is κ ≥ 0.85 for the gate variable and κ
+≥ 0.70 for the four substantive constructs. Pairs with disagreement of ≥
+2 ordinal steps are adjudicated by the principal investigator.
+Annotators receive a fifteen-page codebook, a twenty-thumbnail
+calibration set, and a one-hour group calibration session before
+independent coding begins.
+
+\textbf{Tier 2: Full-corpus computational coding.} All 4,562 thumbnails
+are processed through two parallel pipelines. The computer-vision
+pipeline follows the Automated Visual Content Analysis protocol
+developed for communication research (Araujo, Lock, and Velde 2020): we
+use RapidOCR for text detection and geometric analysis (yielding
+text-area coverage and font-contrast measures that feed the
+\texttt{text\_overlay\_intensity} score) and RetinaFace + a
+Chinese-validated FER model for facial-emotion recognition (yielding a
+continuous emotion-intensity score). The vision-language pipeline issues
+a single structured prompt to Claude Opus 4.7 (Anthropic;
+\texttt{claude-opus-4-7}) with the codebook operational definitions and
+a small set of in-prompt exemplars, returning ordinal scores on
+\texttt{topic\_relevance}, \texttt{threat\_imagery}, \texttt{info\_gap},
+and the four medical-authority items. The raw VLM API responses are
+archived for replication. For thumbnail--title representativeness, we
+use Chinese-CLIP (ViT-B/16) (Yang et al. 2022) to compute cosine
+similarity between cover-image and title embeddings, validated against a
+small ordinal human rating on the 500-thumbnail subsample.
+
+\textbf{Tier 3: Convergent-validity audit.} Computational scores are
+validated against the human gold standard on the 500-thumbnail subsample
+using Spearman's ρ. We pre-specify a threshold of ρ ≥ 0.60 for a
+computational measure to be used in the full-sample analysis. Measures
+that fall short of this threshold are reported only on the 500-thumbnail
+gold-standard subsample. Computational measures that exceed the
+threshold are used at full corpus scale, with all primary models
+additionally fit on the 500-thumbnail gold-standard subsample as a
+robustness check.
+
+This pipeline is broadly consistent with the methodological consensus in
+computational visual social science (Edelmann et al. 2020; Peng, Lock,
+and Salah 2024) and with the multimodal annotation strategies adopted by
+recent thumbnail-detection benchmarks (Naveed, Uzmi, and Qazi 2025). The
+departure from prior practice is the explicit, pre-registered Spearman
+threshold for promoting a computational measure to full-corpus use.
+
+\subsubsection{4.5 Control variables}\label{control-variables}
+
+The principal control variables are: \texttt{video\_age\_days}, the
+number of days between publication and crawl, included to absorb the
+cumulative-engagement bias toward older videos; \texttt{log\_followers},
+the log-transformed follower count of the uploader, included to absorb
+channel size; \texttt{duration\_log}, the log-transformed duration in
+seconds; \texttt{pubdate\_year}, modeled as a categorical fixed effect
+to absorb platform-mechanism evolution across the ten-year publication
+window; \texttt{tname}, the B-station category fixed effect;
+\texttt{copyright\_self}, a binary indicator that the video is original
+(as opposed to reposted, which is rare in our sample but theoretically
+distinct); and the binary \texttt{is\_official} verification indicator.
+We deliberately exclude \texttt{order\_source} (the sort order under
+which the video was retrieved) from the control set, because it is
+endogenous to the video's clickbait intensity and thus post-treatment.
+We report a sensitivity model that includes \texttt{order\_source} fixed
+effects in the appendix. For the 13 percent of videos with missing
+values on \texttt{tid}, \texttt{copyright}, or \texttt{uploader\_level}
+(a legacy of an earlier crawl batch), we use isotonic-regression
+imputation of \texttt{video\_age\_days} from the monotonic \texttt{aid}
+index and code the remaining missing fields as a separate ``missing''
+category.
+
+\subsubsection{4.6 Analytic strategy}\label{analytic-strategy}
+
+For each of the six outcomes, we fit a sequence of five nested
+specifications. Model M1 includes the multimodal clickbait index and the
+information-gap index alone. Model M2 adds the full control set. Model
+M3 adds the representativeness main effect. Model M4 adds the
+multimodal-clickbait-by-representativeness and
+information-gap-by-representativeness interactions. Model M5, the
+exploratory specification, additionally tests the three-way interaction
+with \texttt{is\_official}. Standard errors are cluster-robust at the
+uploader (\texttt{mid}) level to account for non-independence among
+videos posted by the same channel.
+
+We pre-register a \emph{dual-track} primary specification: a
+between-uploader cross-sectional model (M2a) on the full 4,562-video
+sample, and a within-uploader fixed-effects model (M2b) on the subsample
+of uploaders with ≥ 2 videos (n ≈ 1,400 uploaders contributing ≈ 3,500
+videos). The two-track design is motivated by the simultaneous threat of
+unobserved confounding from the recommender system at the
+between-uploader level and the loss of statistical power at the
+within-uploader level. We report both as primary and treat their
+agreement (or disagreement) as substantive.
+
+To test the comparative hypothesis H1b, we estimate the bifurcation
+contrast as the difference between the standardized multimodal-clickbait
+coefficient in the low-cost equation (views; NB) and in the high-cost
+equation (coins; ZINB). We construct a 95 percent confidence interval
+for this difference using a non-parametric bootstrap on 1,000 resamples
+of the video-level data, stratified by uploader. All marginal effects
+are reported as average marginal effects (AMEs) using the
+\texttt{marginaleffects} R package (Arel-Bundock, Greifer, and Heiss
+2024), consistent with the journal's reporting norms.
+
+We pre-specify multiple-comparisons control as follows: the family of
+confirmatory tests is H1a, H1b, H1c, H2, H3, and H4; for this family, we
+apply Benjamini--Hochberg false-discovery-rate control at q = 0.05, with
+the high-cost coin and favorites outcomes designated as primary and the
+remaining four as secondary. The exploratory H5 is reported without
+multiple-comparisons adjustment.
+
+\subsubsection{4.7 Robustness battery}\label{robustness-battery}
+
+We pre-register the following sensitivity checks: (R1) re-fitting with
+ratio outcomes (coins/views, favorites/views, shares/views) using beta
+regression; (R2) restricting to the post-2022 subsample, to address
+platform-mechanism evolution; (R3) trimming the top 5 percent of
+channels by follower count; (R4) restricting to the ``Science \&
+Knowledge'' tname category; (R5) Poisson rather than NB; (R6) replacing
+the continuous multimodal-clickbait index with quartile dummies, to
+relax the linearity assumption; (R7) Oster's δ for
+unobserved-confounding bound (Oster 2019); (R8) E-values for
+treatment-effect robustness (VanderWeele and Ding 2017); (R9)
+restriction to videos with \texttt{topic\_relevance\ ==\ 1} under the
+strict human gold-standard coding; (R10) human-coded-only on the
+500-thumbnail subsample vs.~VLM-coded on the full corpus, to detect
+measurement-source dependence; (R11) listwise deletion vs.~multiple
+imputation (m = 20) for the 13 percent missingness; (R12) two-way
+clustering on (\texttt{mid}, \texttt{pubdate\_month}) to address
+recommender-system-induced SUTVA violations; and (R13)
+leave-one-keyword-out across the five clickbait-stem seed keywords.
+
+\subsubsection{4.8 Causal boundary and
+limitations}\label{causal-boundary-and-limitations}
+
+We do not claim a causal effect of multimodal clickbait on user
+engagement. Bilibili's recommender system jointly determines both which
+thumbnails get promoted into the feed and which receive subsequent
+engagement; the backdoor between the thumbnail and the engagement metric
+cannot be closed with observational data alone. The within-uploader
+fixed-effects specification absorbs all time-invariant uploader
+characteristics, including a channel's average historical promotion by
+the recommender, but does not absorb video-level promotion shocks. Oster
+δ and E-value sensitivity analyses quantify the magnitude of unobserved
+confounding that would be required to nullify the estimated
+associations, but they are not a substitute for an exogenous source of
+variation. Three further limitations apply. First, our corpus is
+``videos that were returned by the search API for 28 health-related
+keywords,'' not ``all health-related videos on Bilibili''; results
+generalize only to the search-indexed subset. Second, engagement metrics
+are a single-day snapshot; ratio outcomes (R1) partially mitigate
+cumulative-engagement bias but do not eliminate it. Third, we measure
+visual features of the cover thumbnail but not the audio-visual content
+of the video itself; a thumbnail-misleading video may be uniformly
+clickbait-y or may deliver substantive content once entered, and our
+design does not distinguish these.
+
+\subsubsection{4.9 Pre-registration, open science, and
+ethics}\label{pre-registration-open-science-and-ethics}
+
+The pre-analysis plan, the codebook, the full set of VLM prompts, and
+the analysis code will be deposited on the Open Science Framework prior
+to the analysis of any outcome model. The corpus metadata (excluding raw
+thumbnail images, which are subject to platform terms of service) will
+be archived on Zenodo with a digital object identifier. Thumbnail images
+themselves will not be redistributed; image URLs and a re-collection
+script will be provided. The uploader identifier (\texttt{mid}) is
+one-way hashed in the public dataset; the uploader signature field
+(\texttt{uploader\_sign}), which may contain identifying titles, will be
+redacted using a structured-label scheme. The study uses only public,
+non-account-restricted platform metadata, with no interaction with users
+or uploaders; our institution's review board has classified the protocol
+as exempt under Category 4 (research involving the collection or study
+of existing publicly available data). We disclose the use of Claude Opus
+4.7 as a secondary coder in the annotation pipeline; all primary coding
+decisions are retained by the human annotators, and the model is used
+only for full-corpus scaling against the human gold standard.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+Al-Ali, M.N. and S.M. Hamzeh. 2024. ``Extra Cues Extra Views: A
+Multimodal Detection of Arabic Clickbait Thumbnail Verbo-Visual Cues.''
+\emph{Discourse \& Communication}.
+
+Arel-Bundock, V., N. Greifer, and A. Heiss. 2024. ``How to Interpret
+Statistical Models Using marginaleffects for R and Python.''
+\emph{Journal of Statistical Software} 111(9): 1--32.
+https://doi.org/10.18637/jss.v111.i09.
+
+Araujo, T., I. Lock, and B. van de Velde. 2020. ``Automated Visual
+Content Analysis (AVCA) in Communication Research: A Protocol for Large
+Scale Image Classification with Pre-Trained Computer Vision Models.''
+\emph{Communication Methods and Measures} 14(4): 239--265.
+
+Bilibili Inc.~2024. \emph{Bilibili Inc.~Reports Third Quarter 2024
+Financial Results}. Form 6-K filed with the U.S. Securities and Exchange
+Commission, November 14, 2024. Retrieved May 25, 2026
+(https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany\&CIK=0001723690).
+
+Bird, R.B. and E.A. Smith. 2005. ``Signaling Theory, Strategic
+Interaction, and Symbolic Capital.'' \emph{Current Anthropology}.
+
+Blom, J.N. and K.R. Hansen. 2015. ``Click Bait: Forward-Reference as
+Lure in Online News Headlines.'' \emph{Journal of Pragmatics} 76:
+87--100.
+
+Bravo, I., K. Prasse, S. Walter, S. O'Neill, and M. Keuper. 2025.
+``Global Dynamics of Climate Change Imagery: Emotional and Engagement
+Effects Across Visual Frames on Twitter/X.'' \emph{Science
+Communication}.
+
+Cao, J., X. Li, and L. Zhang. 2025. ``Is Relevancy Everything? A
+Deep-Learning Approach to Understand the Effect of Image-Text
+Congruence.'' \emph{Management Science}.
+
+Chen, J. 2025. ``Understanding Danmaku and Comment Interactions Through
+Content Features and Video Popularity.'' \emph{Procedia Computer
+Science}.
+
+Donath, J. 2007. ``Signals in Social Supernets.'' \emph{Journal of
+Computer-Mediated Communication}.
+
+Dong, W., Y. Liu, W. Wang, L. Jiang, and Y. Yi. 2025. ``The Impact of
+Danmaku Ritual Types on User Digital Engagement in Video-Based Social
+Media: The Moderating Role of Influencer Types and Domains.''
+\emph{Psychology \& Marketing}.
+
+Edelmann, A., T. Wolff, D. Montagne, and C.A. Bail. 2020.
+``Computational Social Science and Sociology.'' \emph{Annual Review of
+Sociology}.
+
+Geise, S. and Y. Xu. 2025. ``Effects of Visual Framing in Multimodal
+Media Environments: A Systematic Review of Studies Between 1979 and
+2023.'' \emph{Journalism \& Mass Communication Quarterly}.
+
+Guo, L., Y. Wang, P. Li, Y. Wang, and Y. Li. 2026. ``The Impact of
+Headline Characteristics on Clicks: A Case Study of a Chinese Local
+Medium.'' \emph{Journalism Practice} 20(4): 1427--1455.
+
+Heley, K., A. Gaysynsky, and A.J. King. 2022. ``Missing the Bigger
+Picture: The Need for More Research on Visual Health Misinformation.''
+\emph{Science Communication} 44(4): 514--527.
+
+Isaac, M.S. 2025. ``Thirty Years of Persuasion Knowledge Research: From
+Demonstrating Effects to Building Theory to Increasing Applicability.''
+\emph{Consumer Psychology Review}.
+
+Jones, C.L., J.D. Jensen, C.L. Scherr, N.R. Brown, K. Christy, and J.
+Weaver. 2015. ``The Health Belief Model as an Explanatory Framework in
+Communication Research: Exploring Parallel, Serial, and Moderated
+Mediation.'' \emph{Health Communication} 30(6): 566--576.
+
+Keib, K., C. Espina, Y.-I. Lee, B.W. Wojdynski, D. Choi, and H. Bang.
+2018. ``Picture This: The Influence of Emotionally Valenced Images on
+Attention, Selection, and Sharing of Social Media News.'' \emph{Media
+Psychology} 21(2): 202--221.
+
+Khawar, S. and M. Boukes. 2025. ``Analyzing Sensationalism in News on
+Twitter (X): Clickbait Journalism by Legacy vs.~Online-Native Outlets
+and the Consequences for User Engagement.'' \emph{Digital Journalism}
+13(8): 1482--1502.
+
+King, A.J. and A.J. Lazard. 2020. ``Advancing Visual Health
+Communication Research to Improve Infodemic Response.'' \emph{Health
+Communication} 35(14): 1723--1728.
+
+Klein, E.G., K. Roberts, J. Manganello, R. McAdams, and L. McKenzie.
+2020. ``When Social Media Images and Messages Don't Match: Attention to
+Text versus Imagery to Effectively Convey Safety Information on Social
+Media.'' \emph{Journal of Health Communication} 25(11): 879--884.
+
+Kuiken, J., A. Schuth, M. Spitters, and M. Marx. 2017. ``Effective
+Headlines of Newspaper Articles in a Digital Environment.''
+\emph{Digital Journalism} 5(10): 1300--1314.
+
+Lang, A. 2000. ``The Limited Capacity Model of Mediated Message
+Processing.'' \emph{Journal of Communication} 50(1): 46--70.
+
+Li, Y. and Y. Xie. 2020. ``Is a Picture Worth a Thousand Words? An
+Empirical Study of Image Content and Social Media Engagement.''
+\emph{Journal of Marketing Research}.
+
+Limpijankit, M. and J.R. Kender. 2025. ``Detecting Cultural Differences
+in News Video Thumbnails via Computational Aesthetics.''
+
+Liu, A.K.C. and O. Kuru. 2025. ``Understanding the Effects of Visual
+Misinformation: A Systematic Review of 10 Years (2014--2024).''
+\emph{Mass Communication and Society}.
+
+Liu, S., J. Xu, Z. Zhao, and X. Li. 2023. ``Factors Affecting Trust in
+Chinese Digital Journalism: Approach Based on Folk Theories.''
+\emph{Media and Communication} 11(4): 355--366.
+
+Lu, Y. and J. Pan. 2021. ``Capturing Clicks: How the Chinese Government
+Uses Clickbait to Compete for Visibility.'' \emph{Political
+Communication}.
+
+Lu, Y. and J. Pan. 2022. ``The Pervasive Presence of Chinese Government
+Content on Douyin Trending Videos.'' \emph{Computational Communication
+Research}.
+
+Lu, Y. and C. Shen. 2023. ``Unpacking Multimodal Fact-Checking: Features
+and Engagement of Fact-Checking Videos on Chinese TikTok (Douyin).''
+\emph{Social Media + Society}.
+
+Metzger, M.J., A.J. Flanagin, and R.B. Medders. 2010. ``Social and
+Heuristic Approaches to Credibility Evaluation Online.'' \emph{Journal
+of Communication} 60(3): 413--439.
+
+Molyneux, L. and M. Coddington. 2020. ``Aggregation, Clickbait and Their
+Effect on Perceptions of Journalistic Credibility and Quality.''
+\emph{Journalism Practice} 14(4): 429--446.
+
+Munger, K. 2020. ``All the News That's Fit to Click: The Economics of
+Clickbait Media.'' \emph{Political Communication}.
+
+Naveed, W., Z.A. Uzmi, and Z.A. Qazi. 2025. ``ThumbnailTruth: A
+Multi-Modal LLM Approach for Detecting Misleading YouTube Thumbnails
+Across Diverse Cultural Settings.''
+
+Oster, E. 2019. ``Unobservable Selection and Coefficient Stability:
+Theory and Evidence.'' \emph{Journal of Business \& Economic Statistics}
+37(2): 187--204. https://doi.org/10.1080/07350015.2016.1227711.
+
+Peng, Y., I. Lock, and A.A. Salah. 2024. ``Automated Visual Analysis for
+the Study of Social Media Effects: Opportunities, Approaches, and
+Challenges.'' \emph{Communication Methods and Measures}.
+
+Powell, T.E., H.G. Boomgaarden, K. De Swert, and C.H. de Vreese. 2015.
+``A Clearer Picture: The Contribution of Visuals and Text to Framing
+Effects.'' \emph{Journal of Communication}.
+
+Scott, K. 2021. ``You Won't Believe What's in This Paper! Clickbait,
+Relevance and the Curiosity Gap.'' \emph{Journal of Pragmatics} 175:
+53--66.
+
+Shin, J., C. DeFelice, and S. Kim. 2025. ``Emotion Sells: Rage Bait
+vs.~Information Bait in Clickbait News Headlines on Social Media.''
+\emph{Digital Journalism}.
+
+Spence, M. 1973. ``Job Market Signaling.'' \emph{Quarterly Journal of
+Economics}.
+
+Valkenburg, P.M. and J. Peter. 2013. ``The Differential Susceptibility
+to Media Effects Model.'' \emph{Journal of Communication} 63(2):
+221--243.
+
+VanderWeele, T.J. and P. Ding. 2017. ``Sensitivity Analysis in
+Observational Research: Introducing the E-Value.'' \emph{Annals of
+Internal Medicine} 167(4): 268--274. https://doi.org/10.7326/M16-2607.
+
+Vultee, F., G.S. Burgess, D. Frazier, and K. Mesmer. 2022. ``Here's What
+to Know About Clickbait: Effects of Image, Headline and Editing on
+Audience Attitudes.'' \emph{Journalism Practice}.
+
+Wang, Y., B. Hu, C. Tang, and X. Yang. 2025. ``Decoding Clickbait: The
+Impact of Clickbait Types and Structures on Cognitive and Emotional
+Responses in Online Interactions.'' \emph{Cyberpsychology, Behavior \&
+Social Networking}.
+
+Xu, Z., M. Laffidy, and L. Ellis. 2023. ``Clickbait for Climate Change:
+Comparing Emotions in Headlines and Full-Texts and Their Engagement.''
+\emph{Information, Communication \& Society} 26(10): 1915--1932.
+
+Yang, A., J. Pan, J. Lin, R. Men, Y. Zhang, J. Zhou, and C. Zhou. 2022.
+``Chinese CLIP: Contrastive Vision-Language Pretraining in Chinese.''
+
+Yoon, Y., S. Yoon, and K. Park. 2024. ``Assessing News Thumbnail
+Representativeness: Counterfactual Text Can Enhance the Cross-Modal
+Matching Ability.'' \emph{Findings of the Association for Computational
+Linguistics: ACL 2024}.
+
+Zhang, X. and S. Zhou. 2019. ``Clicking Health Risk Messages on Social
+Media: Moderated Mediation Paths Through Perceived Threat, Perceived
+Efficacy, and Fear Arousal.'' \emph{Health Communication} 34(11):
+1359--1368.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Table 1: Keyword Strata and Per-Keyword Sample
+Sizes}\label{table-1-keyword-strata-and-per-keyword-sample-sizes}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Cluster & Keyword & N \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+General health education & 医学科普 & 435 \\
+General health education & 健康科普 & 429 \\
+General health education & 医生提醒 & 390 \\
+General health education & 体检报告 & 248 \\
+General health education & 饮食健康 & 196 \\
+General health education & 养生科普 & 180 \\
+Chronic disease & 糖尿病 科普 & 180 \\
+Chronic disease & 高血压 科普 & 180 \\
+Chronic disease & 心脏病 科普 & 180 \\
+Chronic disease & 脂肪肝 科普 & 180 \\
+Chronic disease & 糖尿病 (short) & 60 \\
+Chronic disease & 高血压 (short) & 20 \\
+Chronic disease & 高血压 危险信号 & 6 \\
+Oncology and screening & 癌症 早期信号 & 180 \\
+Oncology and screening & HPV 疫苗 & 180 \\
+Oncology and screening & 肺癌 科普 & 180 \\
+Oncology and screening & HPV (short) & 60 \\
+Lifestyle & 减肥 科学 & 180 \\
+Lifestyle & 脱发 医生 & 180 \\
+Lifestyle & 睡眠 健康 & 180 \\
+Lifestyle & 减肥 (short) & 60 \\
+Lifestyle & 脱发 (short) & 60 \\
+Clickbait stem & 医生提醒 千万别 & 180 \\
+Clickbait stem & 医生终于说了 & 180 \\
+Clickbait stem & 体检报告 异常 & 130 \\
+Clickbait stem & 这个习惯 致癌 & 92 \\
+Clickbait stem & 健康科普 千万别吃 & 18 \\
+Clickbait stem & 医生提醒 致癌 & 18 \\
+\textbf{Total (pre-dedup)} & --- & \textbf{5,062} \\
+\textbf{Total (post-dedup, primary corpus)} & --- & \textbf{4,562} \\
+\end{longtable}
+
+\textbf{Notes}: N reflects the number of unique videos retrieved under
+each keyword × sort-order combination, before global deduplication on
+\texttt{bvid}. Post-deduplication, 4,562 unique videos remain in the
+analytic corpus. Keyword clusters are coded as a categorical fixed
+effect in all primary models. The ``clickbait stem'' cluster includes
+pre-defined search terms intended to oversample videos with high
+multimodal clickbait intensity; a leave-one-keyword-out robustness check
+is reported in Section 4.7.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Table 2: Descriptive Distributions of Engagement Outcomes (N
+=
+4,562)}\label{table-2-descriptive-distributions-of-engagement-outcomes-n-4562}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Outcome
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Median
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+25th pct
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+75th pct
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+95th pct
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\% zeros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Planned model
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Views (\texttt{play}) & 570,285 & 7,716 & 239 & 245,933 & 3,140,807 &
+1.3 & Negative binomial \\
+Likes (\texttt{like}) & 19,265 & 109 & 5 & 4,694 & 105,566 & 5.1 &
+Negative binomial \\
+Favorites & 8,819 & 66 & 2 & 1,806 & 37,505 & 16.6 & Negative
+binomial \\
+Shares & 3,171 & 18 & 0 & 622 & 12,046 & 27.0 & \textbf{ZINB} \\
+Comments (\texttt{review}) & 674 & 11 & 0 & 358 & 3,486 & 30.5 & ZINB \\
+Coins & 4,682 & 7 & 0 & 282 & 14,663 & 36.5 & \textbf{ZINB} \\
+Danmaku & 1,170 & 1 & 0 & 124 & 4,149 & 45.8 & \textbf{ZINB} \\
+\end{longtable}
+
+\textbf{Notes}: N = 4,562 unique videos. Distributions are heavily
+right-skewed; we report median, 25th, 75th, and 95th percentiles in
+addition to the mean to convey the dispersion. The ``\% zeros'' column
+reports the percentage of videos with the corresponding outcome equal to
+zero. ZINB = zero-inflated negative binomial. The high-cost endorsement
+outcomes (coins, shares, danmaku) all exhibit zero-inflation rates above
+25 percent, motivating the ZINB specification. The inflation equation in
+the ZINB specification includes \texttt{log\_followers} and
+\texttt{video\_age\_days}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+{[}Figure 1 about here{]}
+
+\textbf{Figure 1 (planned)}: Density plot of the multimodal clickbait
+index (factor score derived from emotion intensity + threat imagery +
+text overlay intensity) on the 500-thumbnail human gold-standard
+subsample, overlaid by a parallel distribution from the full-corpus VLM
+coding, color-coded by Spearman ρ convergent-validity tier.
+
+{[}Figure 2 about here{]}
+
+\textbf{Figure 2 (planned)}: Schematic of the dual-track analytic
+strategy. Left panel: the between-uploader cross-sectional specification
+on the full 4,562-video sample. Right panel: the within-uploader
+fixed-effects specification on the ≥ 2-video subsample (n ≈ 1,400
+uploaders, ≈ 3,500 video-observations).
+
+{[}Figure 3 about here{]}
+
+\textbf{Figure 3 (planned)}: Hybrid annotation pipeline diagram. Tier 1:
+500-thumbnail human gold standard (double-blind, two coders). Tier 2:
+full-corpus computational coding (RapidOCR + RetinaFace+FER;
+Chinese-CLIP for representativeness; Claude Opus 4.7 for VLM-scored
+constructs). Tier 3: convergent-validity audit (Spearman ρ ≥ 0.60
+threshold for full-corpus promotion).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-al-ali2024extra}
+Al-Ali, Mohammed Nahar, and Safa M. Hamzeh. 2024. {``Extra Cues Extra
+Views: A Multimodal Detection of {Arabic} Clickbait Thumbnail
+Verbo-Visual Cues.''} \emph{Discourse \& Communication} 18 (1): 3--27.
+\url{https://doi.org/10.1177/17504813231192203}.
+
+\bibitem[\citeproctext]{ref-araujo2020automated}
+Araujo, Theo, Irina Lock, and Bob van de Velde. 2020. {``Automated
+Visual Content Analysis ({AVCA}) in Communication Research: A Protocol
+for Large Scale Image Classification with Pre-Trained Computer Vision
+Models.''} \emph{Communication Methods and Measures} 14 (4): 239--65.
+\url{https://doi.org/10.1080/19312458.2020.1810648}.
+
+\bibitem[\citeproctext]{ref-arel-bundock2024how}
+Arel-Bundock, Vincent, Noah Greifer, and Andrew Heiss. 2024. {``How to
+Interpret Statistical Models Using {marginaleffects} for {R} and
+{Python}.''} \emph{Journal of Statistical Software} 111 (9): 1--32.
+\url{https://doi.org/10.18637/jss.v111.i09}.
+
+\bibitem[\citeproctext]{ref-bilibili2024q3}
+Bilibili Inc. 2024. {``Bilibili Inc. Reports Third Quarter 2024
+Financial Results.''} Form 6-K filed with U.S. Securities and Exchange
+Commission.
+\url{https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany/&CIK=0001723690}.
+
+\bibitem[\citeproctext]{ref-bird2005signaling}
+Bird, Rebecca Bliege, and Eric Alden Smith. 2005. {``Signaling Theory,
+Strategic Interaction, and Symbolic Capital.''} \emph{Current
+Anthropology} 46 (2): 221--48. \url{https://doi.org/10.1086/427115}.
+
+\bibitem[\citeproctext]{ref-blom2015click}
+Blom, Jonas Nygaard, and Kenneth Reinecke Hansen. 2015. {``Click Bait:
+Forward-Reference as Lure in Online News Headlines.''} \emph{Journal of
+Pragmatics} 76: 87--100.
+\url{https://doi.org/10.1016/j.pragma.2014.11.010}.
+
+\bibitem[\citeproctext]{ref-bravo2025global}
+Bravo, Isaac, Katharina Prasse, Stefanie Walter, Saffron O'Neill, and
+Margret Keuper. 2025. {``Global Dynamics of Climate Change Imagery:
+Emotional and Engagement Effects Across Visual Frames on
+{Twitter}/{X}.''} \emph{Science Communication}.
+\url{https://doi.org/10.1177/10755470251401900}.
+
+\bibitem[\citeproctext]{ref-cao2025relevancy}
+Cao, Junyi, Xiaolin Li, and Liang Zhang. 2025. {``Is Relevancy
+Everything? {A} Deep-Learning Approach to Understand the Effect of
+Image-Text Congruence.''} \emph{Management Science} 71 (12).
+\url{https://doi.org/10.1287/mnsc.2022.01896}.
+
+\bibitem[\citeproctext]{ref-chen2025danmaku}
+Chen, Jiawei. 2025. {``Understanding Danmaku and Comment Interactions
+Through Content Features and Video Popularity.''} \emph{Procedia
+Computer Science}.
+
+\bibitem[\citeproctext]{ref-donath2007signals}
+Donath, Judith. 2007. {``Signals in Social Supernets.''} \emph{Journal
+of Computer-Mediated Communication} 13 (1): 231--51.
+\url{https://doi.org/10.1111/j.1083-6101.2007.00394.x}.
+
+\bibitem[\citeproctext]{ref-dong2025impact}
+Dong, Wei, Yu Liu, Wenxuan Wang, Liling Jiang, and Yi Yi. 2025. {``The
+Impact of Danmaku Ritual Types on User Digital Engagement in Video-Based
+Social Media: The Moderating Role of Influencer Types and Domains.''}
+\emph{Psychology \& Marketing}. \url{https://doi.org/10.1002/mar.70003}.
+
+\bibitem[\citeproctext]{ref-edelmann2020computational}
+Edelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail.
+2020. {``Computational Social Science and Sociology.''} \emph{Annual
+Review of Sociology} 46: 61--81.
+\url{https://doi.org/10.1146/annurev-soc-121919-054621}.
+
+\bibitem[\citeproctext]{ref-geise2025effects}
+Geise, Stephanie, and Yi Xu. 2025. {``Effects of Visual Framing in
+Multimodal Media Environments: A Systematic Review of Studies Between
+1979 and 2023.''} \emph{Journalism \& Mass Communication Quarterly} 102
+(3): 796--823. \url{https://doi.org/10.1177/10776990241257586}.
+
+\bibitem[\citeproctext]{ref-guo2026impact}
+Guo, Lu, Yezhu Wang, Pei Li, Yutong Wang, and Yazheng Li. 2026. {``The
+Impact of Headline Characteristics on Clicks: A Case Study of a
+{Chinese} Local Medium.''} \emph{Journalism Practice} 20 (4): 1427--55.
+\url{https://doi.org/10.1080/17512786.2024.2411624}.
+
+\bibitem[\citeproctext]{ref-heley2022missing}
+Heley, Kathryn, Anna Gaysynsky, and Andy J. King. 2022. {``Missing the
+Bigger Picture: The Need for More Research on Visual Health
+Misinformation.''} \emph{Science Communication} 44 (4): 514--27.
+\url{https://doi.org/10.1177/10755470221113833}.
+
+\bibitem[\citeproctext]{ref-isaac2025thirty}
+Isaac, Mathew S. 2025. {``Thirty Years of Persuasion Knowledge Research:
+From Demonstrating Effects to Building Theory to Increasing
+Applicability.''} \emph{Consumer Psychology Review}.
+\url{https://doi.org/10.1002/arcp.1107}.
+
+\bibitem[\citeproctext]{ref-jones2015health}
+Jones, Christina L., Jakob D. Jensen, Courtney L. Scherr, Natasha R.
+Brown, Katheryn Christy, and Jeremy Weaver. 2015. {``The {Health}
+{Belief} {Model} as an Explanatory Framework in Communication Research:
+Exploring Parallel, Serial, and Moderated Mediation.''} \emph{Health
+Communication} 30 (6): 566--76.
+\url{https://doi.org/10.1080/10410236.2013.873363}.
+
+\bibitem[\citeproctext]{ref-keib2018picture}
+Keib, Kate, Camila Espina, Yen-I Lee, Bartosz W. Wojdynski, Dongwon
+Choi, and Hyejin Bang. 2018. {``Picture This: The Influence of
+Emotionally Valenced Images on Attention, Selection, and Sharing of
+Social Media News.''} \emph{Media Psychology} 21 (2): 202--21.
+\url{https://doi.org/10.1080/15213269.2017.1378108}.
+
+\bibitem[\citeproctext]{ref-khawar2025analyzing}
+Khawar, Salman, and Mark Boukes. 2025. {``Analyzing Sensationalism in
+News on {Twitter} ({X}): Clickbait Journalism by Legacy Vs.
+Online-Native Outlets and the Consequences for User Engagement.''}
+\emph{Digital Journalism} 13 (8): 1482--502.
+\url{https://doi.org/10.1080/21670811.2024.2394764}.
+
+\bibitem[\citeproctext]{ref-king2020advancing}
+King, Andy J., and Allison J. Lazard. 2020. {``Advancing Visual Health
+Communication Research to Improve Infodemic Response.''} \emph{Health
+Communication} 35 (14): 1723--28.
+\url{https://doi.org/10.1080/10410236.2020.1838094}.
+
+\bibitem[\citeproctext]{ref-klein2020when}
+Klein, Elizabeth G., Kristin Roberts, Jennifer Manganello, Rebecca
+McAdams, and Lara McKenzie. 2020. {``When Social Media Images and
+Messages Don't Match: Attention to Text Versus Imagery to Effectively
+Convey Safety Information on Social Media.''} \emph{Journal of Health
+Communication} 25 (11): 879--84.
+\url{https://doi.org/10.1080/10810730.2020.1853282}.
+
+\bibitem[\citeproctext]{ref-kuiken2017effective}
+Kuiken, Jeffrey, Anne Schuth, Martijn Spitters, and Maarten Marx. 2017.
+{``Effective Headlines of Newspaper Articles in a Digital
+Environment.''} \emph{Digital Journalism} 5 (10): 1300--1314.
+\url{https://doi.org/10.1080/21670811.2017.1279978}.
+
+\bibitem[\citeproctext]{ref-lang2000limited}
+Lang, Annie. 2000. {``The Limited Capacity Model of Mediated Message
+Processing.''} \emph{Journal of Communication} 50 (1): 46--70.
+\url{https://doi.org/10.1111/j.1460-2466.2000.tb02833.x}.
+
+\bibitem[\citeproctext]{ref-li2020picture}
+Li, Yiyi, and Ying Xie. 2020. {``Is a Picture Worth a Thousand Words?
+{A}n Empirical Study of Image Content and Social Media Engagement.''}
+\emph{Journal of Marketing Research} 57 (1): 1--19.
+\url{https://doi.org/10.1177/0022243719881113}.
+
+\bibitem[\citeproctext]{ref-limpijankit2025detecting}
+Limpijankit, Marvin, and John R. Kender. 2025. {``Detecting Cultural
+Differences in News Video Thumbnails via Computational Aesthetics.''}
+\url{https://arxiv.org/abs/2505.21912}.
+
+\bibitem[\citeproctext]{ref-liu2025understanding}
+Liu, Anita K. C., and Ozan Kuru. 2025. {``Understanding the Effects of
+Visual Misinformation: A Systematic Review of 10 Years (2014--2024).''}
+\emph{Mass Communication and Society}.
+\url{https://doi.org/10.1080/15205436.2025.2549716}.
+
+\bibitem[\citeproctext]{ref-liu2023factors}
+Liu, Shaoqiang, Jinghong Xu, Zi'an Zhao, and Xiaojun Li. 2023.
+{``Factors Affecting Trust in {Chinese} Digital Journalism: Approach
+Based on Folk Theories.''} \emph{Media and Communication} 11 (4):
+355--66. \url{https://doi.org/10.17645/mac.v11i4.7169}.
+
+\bibitem[\citeproctext]{ref-lu2021capturing}
+Lu, Yingdan, and Jennifer Pan. 2021. {``Capturing Clicks: How the
+{Chinese} Government Uses Clickbait to Compete for Visibility.''}
+\emph{Political Communication} 38 (1--2): 23--54.
+\url{https://doi.org/10.1080/10584609.2020.1765914}.
+
+\bibitem[\citeproctext]{ref-lu2022pervasive}
+---------. 2022. {``The Pervasive Presence of {Chinese} Government
+Content on {Douyin} Trending Videos.''} \emph{Computational
+Communication Research} 4 (1): 68--97.
+\url{https://doi.org/10.5117/CCR2022.2.002.LU}.
+
+\bibitem[\citeproctext]{ref-lu2023unpacking}
+Lu, Yingdan, and Cuihua (Cindy) Shen. 2023. {``Unpacking Multimodal
+Fact-Checking: Features and Engagement of Fact-Checking Videos on
+{Chinese} {TikTok} ({Douyin}).''} \emph{Social Media + Society} 9 (1).
+\url{https://doi.org/10.1177/20563051231157591}.
+
+\bibitem[\citeproctext]{ref-metzger2010social}
+Metzger, Miriam J., Andrew J. Flanagin, and Ryan B. Medders. 2010.
+{``Social and Heuristic Approaches to Credibility Evaluation Online.''}
+\emph{Journal of Communication} 60 (3): 413--39.
+\url{https://doi.org/10.1111/j.1460-2466.2010.01488.x}.
+
+\bibitem[\citeproctext]{ref-molyneux2020aggregation}
+Molyneux, Logan, and Mark Coddington. 2020. {``Aggregation, Clickbait
+and Their Effect on Perceptions of Journalistic Credibility and
+Quality.''} \emph{Journalism Practice} 14 (4): 429--46.
+\url{https://doi.org/10.1080/17512786.2019.1628658}.
+
+\bibitem[\citeproctext]{ref-munger2020news}
+Munger, Kevin. 2020. {``All the News That's Fit to Click: The Economics
+of Clickbait Media.''} \emph{Political Communication} 37 (3): 376--97.
+\url{https://doi.org/10.1080/10584609.2019.1687626}.
+
+\bibitem[\citeproctext]{ref-naveed2025thumbnailtruth}
+Naveed, Wajiha, Zartash Afzal Uzmi, and Zafar Ayyub Qazi. 2025.
+{``{ThumbnailTruth}: A Multi-Modal {LLM} Approach for Detecting
+Misleading {YouTube} Thumbnails Across Diverse Cultural Settings.''}
+\url{https://arxiv.org/abs/2509.04714}.
+
+\bibitem[\citeproctext]{ref-oster2019unobservable}
+Oster, Emily. 2019. {``Unobservable Selection and Coefficient Stability:
+Theory and Evidence.''} \emph{Journal of Business \& Economic
+Statistics} 37 (2): 187--204.
+\url{https://doi.org/10.1080/07350015.2016.1227711}.
+
+\bibitem[\citeproctext]{ref-peng2024automated}
+Peng, Yilang, Irina Lock, and Albert Ali Salah. 2024. {``Automated
+Visual Analysis for the Study of Social Media Effects: Opportunities,
+Approaches, and Challenges.''} \emph{Communication Methods and Measures}
+18 (2): 163--85. \url{https://doi.org/10.1080/19312458.2023.2277956}.
+
+\bibitem[\citeproctext]{ref-powell2015clearer}
+Powell, Thomas E., Hajo G. Boomgaarden, Knut De Swert, and Claes H. de
+Vreese. 2015. {``A Clearer Picture: The Contribution of Visuals and Text
+to Framing Effects.''} \emph{Journal of Communication} 65 (6):
+997--1017. \url{https://doi.org/10.1111/jcom.12184}.
+
+\bibitem[\citeproctext]{ref-scott2021you}
+Scott, Kate. 2021. {``You Won't Believe What's in This Paper!
+{C}lickbait, Relevance and the Curiosity Gap.''} \emph{Journal of
+Pragmatics} 175: 53--66.
+\url{https://doi.org/10.1016/j.pragma.2020.12.023}.
+
+\bibitem[\citeproctext]{ref-shin2025emotion}
+Shin, Jieun, Chris DeFelice, and Soojong Kim. 2025. {``Emotion Sells:
+Rage Bait Vs.~Information Bait in Clickbait News Headlines on Social
+Media.''} \emph{Digital Journalism} 13 (7): 1271--90.
+\url{https://doi.org/10.1080/21670811.2025.2505566}.
+
+\bibitem[\citeproctext]{ref-spence1973job}
+Spence, Michael. 1973. {``Job Market Signaling.''} \emph{Quarterly
+Journal of Economics} 87 (3): 355--74.
+\url{https://doi.org/10.2307/1882010}.
+
+\bibitem[\citeproctext]{ref-valkenburg2013differential}
+Valkenburg, Patti M., and Jochen Peter. 2013. {``The Differential
+Susceptibility to Media Effects Model.''} \emph{Journal of
+Communication} 63 (2): 221--43.
+\url{https://doi.org/10.1111/jcom.12024}.
+
+\bibitem[\citeproctext]{ref-vanderweele2017sensitivity}
+VanderWeele, Tyler J., and Peng Ding. 2017. {``Sensitivity Analysis in
+Observational Research: Introducing the {E}-Value.''} \emph{Annals of
+Internal Medicine} 167 (4): 268--74.
+\url{https://doi.org/10.7326/M16-2607}.
+
+\bibitem[\citeproctext]{ref-vultee2022clickbait}
+Vultee, Fred, G. Scott Burgess, Darryl Frazier, and Kelsey Mesmer. 2022.
+{``Here's What to Know about Clickbait: Effects of Image, Headline and
+Editing on Audience Attitudes.''} \emph{Journalism Practice} 16 (1):
+1--18. \url{https://doi.org/10.1080/17512786.2020.1793379}.
+
+\bibitem[\citeproctext]{ref-wang2025decoding}
+Wang, Yikai, Bin Hu, Chaolan Tang, and Xian Yang. 2025. {``Decoding
+Clickbait: The Impact of Clickbait Types and Structures on Cognitive and
+Emotional Responses in Online Interactions.''} \emph{Cyberpsychology,
+Behavior \& Social Networking}.
+\url{https://doi.org/10.1089/cyber.2024.0295}.
+
+\bibitem[\citeproctext]{ref-xu2023clickbait}
+Xu, Zhan, Mary Laffidy, and Lauren Ellis. 2023. {``Clickbait for Climate
+Change: Comparing Emotions in Headlines and Full-Texts and Their
+Engagement.''} \emph{Information, Communication \& Society} 26 (10):
+1915--32. \url{https://doi.org/10.1080/1369118X.2022.2050416}.
+
+\bibitem[\citeproctext]{ref-yang2022chinese}
+Yang, An, Junshu Pan, Junyang Lin, Rui Men, Yichang Zhang, Jingren Zhou,
+and Chang Zhou. 2022. {``{Chinese} {CLIP}: Contrastive Vision-Language
+Pretraining in {Chinese}.''} \url{https://arxiv.org/abs/2211.01335}.
+
+\bibitem[\citeproctext]{ref-yoon2024assessing}
+Yoon, Yejun, Seunghyun Yoon, and Kunwoo Park. 2024. {``Assessing News
+Thumbnail Representativeness: Counterfactual Text Can Enhance the
+Cross-Modal Matching Ability.''} In \emph{Findings of the Association
+for Computational Linguistics: ACL 2024}, 9009--24. Bangkok, Thailand.
+\url{https://doi.org/10.18653/v1/2024.findings-acl.534}.
+
+\bibitem[\citeproctext]{ref-zhang2019clicking}
+Zhang, Xueying, and Shuhua Zhou. 2019. {``Clicking Health Risk Messages
+on Social Media: Moderated Mediation Paths Through Perceived Threat,
+Perceived Efficacy, and Fear Arousal.''} \emph{Health Communication} 34
+(11): 1359--68. \url{https://doi.org/10.1080/10410236.2018.1489202}.
+
+\end{CSLReferences}
+
+\end{document}

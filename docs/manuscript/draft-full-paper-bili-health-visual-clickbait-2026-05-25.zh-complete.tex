@@ -1,0 +1,611 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  fontset=none]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Songti SC}
+    \setCJKsansfont[]{PingFang SC}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Songti SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{购买注意力，而非购买认可：视觉标题党机制与 B站健康科普视频用户参与的分化}\label{ux8d2dux4e70ux6ce8ux610fux529bux800cux975eux8d2dux4e70ux8ba4ux53efux591aux6a21ux6001ux6807ux9898ux515aux4e0e-bux7ad9ux5065ux5eb7ux79d1ux666eux89c6ux9891ux7528ux6237ux53c2ux4e0eux7684ux5206ux5316}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{摘要}\label{ux6458ux8981}
+
+短视频平台已经成为公众获取健康信息的重要入口，但健康传播研究对视频缩略图中的视觉线索仍缺乏充分理论化。本文考察 B站健康科普视频缩略图中的视觉标题党线索如何与不同成本层级的用户参与相关联。B站是中国最大的长视频平台之一，其用户参与机制同时包含播放、点赞、投币、收藏和分享等成本不同的行为：播放和点赞是低成本注意力，投币（受平台每日代币配额限制）、收藏和分享是高成本认可。本文不把视觉标题党当作单一二分标签，而是把它分解为可分别测量的视觉维度（情感强度、恐惧诉求、文字覆盖、视觉悬念、信息缺口、图文代表性、医学权威线索，以及 Chinese-CLIP 图文相似度）。语料来自 B站公开搜索 API，覆盖发布于 2016 至 2026 年的健康科普视频；5,000 张缩略图经视觉语言模型（Qwen-VL-Plus，阿里云 DashScope，\texttt{qwen-vl-plus-latest}）编码，成功 4,945 条，与粉丝数、时长、CLIP 相似度合并后得到 3,325 条完整建模样本，来自 1,503 个 UP 主。模型采用负二项回归（NB），并在投币上以 hurdle 模型处理零膨胀，全部在 UP 主层面使用聚类稳健标准误，并以聚类自助法报告平均边际效应。结果显示三点。第一，是否视觉标题党的简单二分变量在控制后对全部五个参与结果均不显著，说明二分判定不是有用的解释单位。第二，真正有解释力的是具体视觉机制：情感强度仅在低成本注意力上显著正向（播放 IRR=exp(0.16)，点赞 exp(0.12)），在高成本认可上不显著——即``购买注意力，而非购买认可''。第三，``正规感''视觉线索受到参与惩罚：医学权威线索在播放、点赞、收藏、分享上系统性负向；图文代表性与 CLIP 图文相似度整体负向，即缩略图越规范、越与标题一致，参与反而越低。三项稳健性检验（限 2022 年后、剔除粉丝前 5\%、仅科学科普分区）结论一致。本文为观察性设计，全文使用关联性语言。\emph{关键词}：视觉标题党，健康传播，B站，缩略图，用户参与，计算测量。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 引言}\label{ux5f15ux8a00}
+
+当 B站用户在搜索页输入``癌症 早期信号''时，在读到任何完整医学内容之前，首先看到的是一列视频缩略图。其中一张缩略图显示一位穿白大褂的医生，身后配有醒目的黄色大字``千万别乱用，用错后果严重''，旁边还有三个红色感叹号。另一张缩略图呈现一个正在哭泣的小孩和一位坐在轮椅上的老人，黄色文案请求陌生人``不要忽视他们''。第三张则是同一位医生坐在桌前，旁边有一份检查报告，标题文字只是``糖尿病出现口干口渴 有3种情况''。这三条视频出现在同一个搜索结果中，也都被上传者标记为健康教育内容。但它们向观看者发出的行动邀请并不相同，也很可能被 B站独特的参与机制以不同方式奖励。
+
+B站区别于许多短视频平台的关键特征，是它保留了一套分层且具有成本梯度的用户行为。观看者可以播放视频（\texttt{play}）、点赞（\texttt{like}）、收藏以便未来再看（\texttt{favorites}）、向外部分享（\texttt{share}），并且更重要的是，可以消耗平台配给的代币为视频``投币''（\texttt{coin}）。投币是稀缺行为：每个用户每天获得的投币额度有限，而且对单个视频最多只能投一枚币。因此，投币是一种被平台设计强制经济化的行为。在更广泛的平台参与研究中，这种分层结构并不常见。多数平台将参与行为简化为观看、点赞、评论和分享，很少内置一种明确的、代币化的、有成本的认可行为 （Lu and Shen 2023）。因此，B站提供了一个自然的经验场域，使我们能够追问：不同类型的参与行为是否会对同一种内容线索作出不同反应？本文的公开搜索 API 采集稳定返回播放、点赞、投币、收藏和分享五类计数指标，因此分析以这五类为结果变量。
+
+本文关注的线索是视频缩略图。缩略图是信息流平台中的核心视觉信号：它在视频播放前出现，占据用户视觉场域的大部分区域，并且越来越多地承载高密度设计元素，包括面部表情、威胁性图像、颜色对比和文字叠加。文字叠加事实上常常充当第二个、平行于标题的视觉标题。计算传播研究已经开始把缩略图视为独立分析单位 （Lu and Pan 2022；Al-Ali and Hamzeh 2024；Limpijankit and Kender 2025；Naveed, Uzmi, and Qazi 2025）。在新闻学研究中，``标题党''长期指那些以最大化点击率为目的、但可能牺牲信息质量或后续信任的标题策略 （Munger 2020；Vultee et al.~2022；Shin, DeFelice, and Kim 2025；Wang et al.~2025）。本文将这一概念扩展到视觉层面，并提出问题：当 B站健康科普视频在缩略图中使用多模态标题党线索时，这些线索究竟产生了什么类型的用户参与？
+
+本文论证分为三部分。第一，我们把 B站的参与指标视为一个``成本层级''。播放和点赞是低成本行为；投币、收藏和外部分享则要求用户承担真实的预算成本或社会成本 （Dong et al.~2025）。第二，基于好奇缺口理论 （Scott 2021；Blom and Hansen 2015）、媒介信息加工有限容量模型 （Lang 2000）、视觉框架研究 （Powell et al.~2015；Geise and Xu 2025），以及高唤起线索可以制造注意但未必制造认可的双过程直觉 （Shin, DeFelice, and Kim 2025；Vultee et al.~2022），我们预期多模态标题党与低成本注意力之间的关联强于其与高成本认可之间的关联。第三，我们预期这种差距受到``缩略图-标题代表性''的调节：当缩略图准确预告标题以及视频实际内容时，高成本认可更可能出现。这一预期同时符合图文一致性文献 （Li and Xie 2020；Cao, Li, and Zhang 2025；Yoon, Yoon, and Park 2024） 和安全信息图文匹配的眼动研究证据 （Klein et al.~2020）。
+
+本文在 B站健康科普视频语料上检验这些预期。这些视频发布于 2016 年 6 月至 2026 年 5 月之间，通过 B站公开搜索 API 以中文健康关键词采集，覆盖一般健康教育、慢性病、肿瘤与筛查、生活方式，以及预设的标题党词干短语（如``医生提醒''\,``医生终于说了''\,``这个习惯致癌''）。对每条视频，我们采集完整 API 元数据、五类互动计数、UP 主属性（包括粉丝数和平台认证状态）以及视频封面缩略图。视觉构念通过视觉语言模型对全语料缩略图评分得到，并辅以 Chinese-CLIP 图文相似度。经编码与字段合并后，最终完整建模样本为 3,325 条视频，来自 1,503 个 UP 主（详见第四节）。关键的是，本文不把视觉标题党压缩成一个``是否标题党''的二分标签，而是分别测量构成它的若干视觉维度，从而得以区分``哪一类视觉机制''与``哪一层级参与''相关联。
+
+本文是一项观察性研究，全文使用关联性语言，不作因果声称。本文的贡献有三：（a）阐明为何应把视觉标题党理解为多个可分维度的视觉机制，并把用户参与理解为有成本梯度的行为体系；（b）记录一个可审计的计算编码流程，供后续研究复用；（c）以负二项和 hurdle 模型、UP 主层面聚类稳健标准误，实证检验不同视觉机制与不同成本层级参与之间的关联，并处理高成本参与变量中的零膨胀以及推荐系统混杂下关联性推断的已知边界 （Lu and Pan 2021）。本文围绕四个研究问题展开：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{RQ1}：B站健康科普视频在多大程度上使用多模态标题党线索（戏剧化情绪、威胁性图像、密集文字叠加）来设计缩略图？
+\item
+  \textbf{RQ2}：多模态标题党是否与更高的低成本参与（播放、点赞）相关，而不是同等地与高成本认可（投币、收藏、分享）相关？
+\item
+  \textbf{RQ3}：缩略图-标题代表性是否调节低成本注意力与高成本认可之间的差距？
+\item
+  \textbf{RQ4}：这种参与分化模式是否取决于 UP 主的平台认证状态？
+\end{itemize}
+
+文章余下部分安排如下。第二节综述三类文献：视觉标题党与缩略图设计，图文一致性与处理流畅性，以及以 B站为重点的平台参与分层。第三节发展理论论证并提出假设。第四节介绍语料、码本、计算标注流程与分析策略，并说明本设计的关联边界。第五节报告实证结果。第六节讨论理论意涵与局限。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 文献综述}\label{ux6587ux732eux7efcux8ff0}
+
+\subsubsection{2.1 从文字标题党到多模态缩略图标题党}\label{ux4eceux6587ux5b57ux6807ux9898ux515aux5230ux591aux6a21ux6001ux7f29ux7565ux56feux6807ux9898ux515a}
+
+标题党研究起源于新闻学对标题策略的分析，其核心关注是媒体如何通过隐藏信息来最大化点击。在线新闻的语言学分析提出，``前指''（forward-reference）是诱发期待的一种典型装置：标题使用回指或指示性表达，承诺读者尚未看到的内容 （Blom and Hansen 2015）。关联理论研究进一步说明，成功的标题党标题会利用定指表达和强化词来构造一种只有点击才能填补的信息缺口 （Scott 2021）。媒体经济学则把标题党形式化为注意力受限的读者与收入受限的发布者之间的策略互动：在稀缺注意力市场中，夸张是发布者对竞争环境的理性回应 （Munger 2020）。这一传统中的经验研究显示，标题党标题确实能提高点击率，但同时也可能损害用户对来源可信度的判断和分享意愿 （Vultee et al.~2022）；情绪化框架，尤其是``愤怒诱饵''，与信息缺口式标题的运作机制也有所不同 （Shin, DeFelice, and Kim 2025）。使用 EEG 和行为测量的受众实验进一步发现，不同类型的标题党（夸张、暗示、视觉修辞、谜题）会诱发可测量的不同认知和情绪反应 （Wang et al.~2025）。说服知识模型提供了更一般的解释：一旦读者识别出说服意图，他们对来源和内容的后续评价就会改变 （Isaac 2025）。
+
+本文受这一文献的两项扩展启发。第一项扩展是转向非西方、平台原生且视觉主导的语境。Lu 和 Pan 对中国政府标题党实践的研究表明，标题党并不只是小报现象，而是算法可见度压力下的结构性回应 （Lu and Pan 2021）。他们关于抖音的后续研究显示，视觉主导的短视频平台已经形成一套最大化注意力的视频特征语法，包括高亮度、暖色调、短时长，以及与名人内容相似的视觉风格 （Lu and Pan 2022）。他们对中文事实核查视频的分析也进一步说明，用户参与和信息质量会对不同多模态特征作出不同反应 （Lu and Shen 2023）。第二项扩展是从文字标题转向视觉缩略图。Al-Ali 和 Hamzeh 对阿语 YouTube 标题党缩略图的分析显示，视觉线索、叠加文字和嵌入标点共同构成一个意义系统，而传统文字标题党研究系统性地遗漏了这个系统 （Al-Ali and Hamzeh 2024）。ThumbnailTruth 作为近期跨文化多模态 LLM 基准，对误导性缩略图检测问题进行了形式化，并指出文化多样的缩略图难以用单一语言方案处理 （Naveed, Uzmi, and Qazi 2025）。Limpijankit 和 Kender 则使用计算美学证明，缩略图设计中的系统性文化差异可以被大规模测量 （Limpijankit and Kender 2025）。本文在这些工作的基础上，把``视觉标题党''理解为多模态现象：一张缩略图不仅在叠加文字制造好奇缺口时构成标题党，也可能通过夸张面部表情、显著威胁图像和遮蔽底图的大面积文字层构成标题党。
+
+\subsubsection{2.2 图文一致性、处理流畅性与下游参与}\label{ux56feux6587ux4e00ux81f4ux6027ux5904ux7406ux6d41ux7545ux6027ux4e0eux4e0bux6e38ux53c2ux4e0e}
+
+第二类文献主要来自营销学和计算社会科学，关注图像与伴随文本之间的关系如何塑造用户行为。Li 和 Xie 对品牌社交媒体帖子的分析表明，图像内容、图像质量、人脸出现和图文匹配都能独立预测用户参与 （Li and Xie 2020）。使用深度学习测量图文一致性的后续研究则复杂化了``越一致越好''的简单直觉。Cao、Li 和 Zhang 发现，图文一致性与消费者偏好之间可能是非单调关系：高度一致带来流畅性，低一致带来惊奇和精细加工，而中等一致可能最不具吸引力 （Cao, Li, and Zhang 2025）。在自然语言处理框架下，Yoon 等人提出新闻缩略图代表性可以通过反事实文本生成来测量，并且代表性不同于一般的标题-图像相似性 （Yoon, Yoon, and Park 2024）。对于内容量巨大的视觉主导平台而言，问题已经不再是``一致性是否重要''，而是``它对哪一种参与指标重要''。这正是本文利用的经验入口。
+
+视觉框架研究已经说明，图像和文本对框架效应的贡献并不冗余：文本更容易改变意见，图像更容易改变行为意图 （Powell et al.~2015）。一项覆盖 45 年视觉框架研究的系统综述发现，既有研究过度关注单图刺激，对多模态、平台原生和行为结果研究投入不足 （Geise and Xu 2025）。视觉错误信息研究也得出类似结论：视觉误导线索长期研究不足 （Heley, Gaysynsky, and King 2022），而其对可信度和下游行为的影响在不同文化和平台语境中并不一致 （Liu and Kuru 2025）。关于健康安全信息的眼动研究显示，配图与文字信息不匹配会降低用户对安全信息本身的注意和记忆 （Klein et al.~2020），这说明代表性并非风格偏好，而是影响理解的因素。在更广泛的健康传播中，Twitter/X 上气候图像的情绪内容也会系统性影响图像驱动的参与 （Bravo et al.~2025）；自动化视觉分析已经成为研究社交媒体健康效应的可行经验策略 （Peng, Lock, and Salah 2024）。
+
+\subsubsection{2.3 平台层面的参与分层、B站与弹幕}\label{ux5e73ux53f0ux5c42ux9762ux7684ux53c2ux4e0eux5206ux5c42bux7ad9ux4e0eux5f39ux5e55}
+
+第三类文献聚焦中文视频平台 B站及其相邻平台抖音，提供本文的结果变量基础。B站的独特之处在于，它保留了双重观看行为结构：除了标准的观看、点赞、评论和分享之外，它还有同步显示的弹幕层，以及平台有意配给的投币代币。事实核查视频研究已经开始认真对待这种分层。Lu 和 Shen 对抖音中文事实核查视频的分析区分了会响应多模态特征的参与信号和不会响应的参与信号 （Lu and Shen 2023）。在 B站语境中，Chen 发现弹幕互动由不同于评论量的内容特征预测，这说明弹幕在参与层级中占据行为上不同的位置 （Chen 2025）。Dong 等人提出弹幕仪式类型的分类，如问候、投射、评价等，并发现影响下游数字参与的是弹幕仪式类型，而不是原始弹幕数量 （Dong et al.~2025）。这些发现指向同一个方法论要点：把参与合并成一个总分会丢失理论信息。
+
+信号理论最初来自劳动经济学 （Spence 1973），后被 Donath 移植到线上社会环境 （Donath 2007），也为本文提供互补视角。昂贵信号之所以具有信息量，正是因为它们昂贵；廉价信号之所以常见，正是因为它们廉价 （Bird and Smith 2005）。应用到 B站，这意味着投币或收藏携带的信息不同于播放或点赞，因为用户为了发出这些信号付出了真实成本：前者消耗的是受限代币，后者则消耗未来自我管理收藏列表的边际成本。经验问题在于：多模态标题党线索本来是为了最大化廉价信号（点击）而设计的，它们是否也能最大化昂贵信号？说服知识模型预期，一旦观看者识别出说服意图，即使他们继续提供廉价参与，也可能抑制昂贵认可 （Isaac 2025）。本文并不直接检验这一心理机制，但它构成了我们方向性预测的基础。
+
+另一个计算社会科学分支说明，大规模多模态视频分析已经可以覆盖数万条视频，但自动化视觉测量必须通过人工标注进行明确的构念效度审计 （Edelmann et al.~2020；Peng, Lock, and Salah 2024）。这一方法共识直接塑造了本文的标注设计（见第四节）。
+
+\subsubsection{2.4 现有研究缺口}\label{ux73b0ux6709ux7814ux7a76ux7f3aux53e3}
+
+标题党、图文一致性和 B站参与研究都在快速发展，但三者尚未真正连接起来。标题党研究仍然以文本为中心；少数多模态标题党研究也主要集中在英语和阿语新闻语境 （Al-Ali and Hamzeh 2024；Naveed, Uzmi, and Qazi 2025）。图文一致性研究则集中于品牌营销场景，其结果变量通常是购买或态度，而不是有成本梯度的平台参与。B站参与研究在弹幕层面最为成熟，但据我们所知，尚未处理不同视觉线索是否会映射到平台参与成本层级的问题。健康科普内容具有独特的可信度和下游行为风险，但现有研究更多评估内容质量，而很少研究决定用户是否进入视频的上游视觉线索。本文正位于这三个缺口的交叉点。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 理论与假设}\label{ux7406ux8bbaux4e0eux5047ux8bbe}
+
+\subsubsection{3.1 用户参与的成本梯度观}\label{ux7528ux6237ux53c2ux4e0eux7684ux6210ux672cux68afux5ea6ux89c2}
+
+本文的理论起点是：B站用户参与不是一个单一数量，而是一组成本不同的行动。播放只要求用户投入开始观看视频的边际注意力。点赞只要求一次点击。收藏意味着用户把视频归类为未来值得再看的内容。分享要求用户承担社会风险，也就是向外部受众推荐视频所附带的声誉含义。投币则要求用户消耗一部分每日平台配给预算，并且一旦投出不可撤回：投给这里的币今天就不能再投给别的视频。本文据此把播放和点赞视为低成本注意力，把投币、收藏和分享视为高成本认可。我们并不主张所有用户以完全相同的方式感知这些成本；我们只主张，这种行为排序在总体层面足够稳定，因此值得被分析性地区分。
+
+这一框架来自信号理论关于廉价信号和昂贵信号的核心区分 （Spence 1973；Bird and Smith 2005；Donath 2007）。均衡中，一个信号的信息含量随其成本上升而提高：廉价信号常见，因此信息量较低；昂贵信号稀缺，因此更具诊断性。应用到视频语料，这意味着同一种内容特征可能在廉价参与和昂贵参与上产生统计上不同的模式；把这些结果合并起来，不是揭示行为，而是遮蔽行为。
+
+\subsubsection{3.2 为什么多模态标题党会购买注意力，而非购买认可}\label{ux4e3aux4ec0ux4e48ux591aux6a21ux6001ux6807ux9898ux515aux4f1aux8d2dux4e70ux6ce8ux610fux529bux800cux975eux8d2dux4e70ux8ba4ux53ef}
+
+多模态标题党是一种通过放大缩略图中感知显著线索来最大化点击概率的内容策略。本文识别三类此类线索：\textbf{情绪强度}，即夸张面部表情，尤其是恐惧、震惊或厌恶；\textbf{威胁图像}，即医疗器械、病灶、痛苦身体、红色警告标识；以及\textbf{文字叠加强度}，即高覆盖、高对比度的缩略图文字，它们预先制造好奇缺口。每类线索都有不同机制基础。情绪化图像比中性图像加工更快、记忆更强，情绪强度也与社交媒体内容的病毒式传播相关 （Bravo et al.~2025；Shin, DeFelice, and Kim 2025）。威胁图像激活恐惧诉求中的威胁显著性通道；在缺少效能线索时，威胁更容易驱动注意，而不一定驱动审慎行动 （Zhang and Zhou 2019；Heley, Gaysynsky, and King 2022）。文字叠加强度则相当于把第二个标题嵌入图像，扩大构造好奇缺口的表面空间 （Al-Ali and Hamzeh 2024；Scott 2021；Blom and Hansen 2015）。
+
+这些机制的共同点是，它们主要指向``进入''决策，也就是是否点击，而不是指向``进入后''决策，也就是是否认可。关于读者端标题党的研究与这种不对称一致：标题党标题往往可靠地提高点击，却不一定提高信任、分享或其他下游测量（Vultee et al.~2022；Shin, DeFelice, and Kim 2025；Wang et al.~2025）。说服知识模型为这种不对称提供了概念名称：一旦观看者意识到缩略图被设计出来是为了最大化他们点击的概率，他们可能仍然点击，但会保留那些本来可以表示认可的昂贵信号（Isaac 2025）。在 B站上，昂贵信号正是受限的投币、面向未来的收藏和外部分享。因此，我们预期出现一种参与分化：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H1a}：多模态标题党强度与低成本参与（播放、点赞）正相关。
+\item
+  \textbf{H1b}：多模态标题党强度与高成本认可（投币、收藏、分享）的关联弱于其与低成本参与的关联。
+\end{itemize}
+
+H1b 是一个比较性假设：它预测视觉标题党机制在高成本认可方程中的标准化系数弱于其在低成本注意力方程中的标准化系数，而不是预测该系数一定为零或负。由于本文把视觉标题党分解为若干可分维度，H1a-H1b 在经验上对应于：每个标准化视觉维度在低成本结果（播放、点赞）NB 方程中的系数应强于其在高成本结果（投币、收藏、分享）NB 方程中的系数。本文通过比较同一维度在两类结果上的标准化系数来评估这一不对称（见 4.6 节与第五节）。
+
+\subsubsection{3.3 为什么信息缺口应被单独处理}\label{ux4e3aux4ec0ux4e48ux4fe1ux606fux7f3aux53e3ux5e94ux88abux5355ux72ecux5904ux7406}
+
+在初步编码中，并且与好奇缺口传统一致，我们将``信息缺口''同上文三类视觉标题党维度区分开来。信息缺口是标题承诺的属性，而不是缩略图图像的属性。它指的是标题和缩略图可见文案在多大程度上有意保留视频的关键答案。语料中的例子包括``这个习惯致癌''（哪种习惯？）、``医生终于说了''（说了什么？）、``体检出现这些信号千万别忽视''（哪些信号？）。从理论上说，信息缺口机制更偏认知而非情感：它使观看者意识到自身存在知识缺口，并把点击作为闭合缺口的方式 （Scott 2021；Blom and Hansen 2015）。因为缺口是在文本中构造的，将它与面部表情等图像侧线索混为一谈会误命名构念。因此，本文把信息缺口作为一个单独预测变量：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H1c}：信息缺口强度与低成本参与正相关，并且与高成本认可之间的关联弱于与低成本参与之间的关联，这一模式与 H1a-H1b 平行。
+\end{itemize}
+
+\subsubsection{3.4 为什么缩略图-标题代表性会调节这种差距}\label{ux4e3aux4ec0ux4e48ux7f29ux7565ux56fe-ux6807ux9898ux4ee3ux8868ux6027ux4f1aux8c03ux8282ux8fd9ux79cdux5deeux8ddd}
+
+代表性指的是缩略图能否准确预告标题以及视频内容。一个高代表性的缩略图，如果对应标题是``糖尿病患者口干口渴要注意的三种情况''，可能会呈现医生、检查报告和列出三点的文字叠加；而低代表性的缩略图可能只是显示一张泛泛的水杯图。两类文献给出了相反预测，而哪种机制占优需要经验检验。
+
+处理流畅性传统认为，一致的图文组合更容易加工，更容易产生可信感，也更可能将注意力转化为行动 （Li and Xie 2020）。相反，好奇-不一致传统认为，不匹配会制造惊奇和精细加工，在某些条件下也可能促进转化 （Cao, Li, and Zhang 2025）。本文预期，对\textbf{高成本认可}而言，流畅性通道会占主导。原因是，收藏和投币要求观看者对内容价值作出面向未来的判断，而这种判断取决于缩略图承诺是否被兑现。我们预期代表性与低成本注意力之间的关联较弱，因为注意力在点击瞬间就被捕获，而这发生在用户有机会比较代表性之前。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H2}：缩略图-标题代表性与高成本认可正相关。
+\item
+  \textbf{H3}：代表性与高成本认可之间的正向关联强于其与低成本参与之间的关联。
+\end{itemize}
+
+\subsubsection{3.5 医学权威线索与认证状态}\label{ux533bux5b66ux6743ux5a01ux7ebfux7d22ux4e0eux8ba4ux8bc1ux72b6ux6001}
+
+健康科普内容具有一般标题党研究不具备的来源可信度含义。白大褂、临床报告或医院背景都可以充当医学权威的视觉信号。基于信号理论，权威线索应当增强高成本认可，但只有当这些线索与内容一致时，这种增强才更可能成立；当权威线索与高标题党强度共存时，观看者可能将其理解为包装而非资质，从而减弱认可反应 （Isaac 2025；Heley, Gaysynsky, and King 2022）。本文首先提出主效应：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H4}：医学权威视觉线索与高成本认可正相关。
+\end{itemize}
+
+B站通过正式认证区分上传者。认证账号（\texttt{is\_official\ ==\ TRUE}）包括认证医疗专业人士、机构频道和认证媒体账号。信号理论和读者端文献都提示，H1 中的参与分化可能在认证账号中被削弱：观看者可能对认证上传者给予更多信任，从而更容易把标题党驱动的注意力转化为高成本认可；也可能反过来，由于认证上传者本应承担更高标准，观看者在其使用标题党时反而更严格，因而压低认可。由于两个方向都有理论依据，本文把该调节作为探索性假设：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H5（探索性）}：H1 中的参与分化模式受到 UP 主认证状态调节；本文不预设方向。
+\end{itemize}
+
+H5 仅在附录报告；主要验证性假设族为 H1a-H4。
+
+\subsubsection{3.6 本文不作哪些声称}\label{ux672cux6587ux4e0dux4f5cux54eaux4e9bux58f0ux79f0}
+
+本文不声称视觉标题党对参与行为具有因果效应。本研究为观察性设计。B站推荐系统是一个重要的未观测混杂来源，因为它同时影响上传者选择哪些视觉线索，也影响视频最终获得多少参与。本文采取的保护性措施是：全文使用明确的关联性语言，并在 UP 主层面对标准误作聚类稳健处理，以反映同一频道发布多个视频导致的非独立性。我们并不声称这些措施识别了因果效应，只是认为它们在观察性设计内提高了关联推断的可信度；推荐系统等未观测混杂的边界，本文留作明确局限（见 4.8 节）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 数据与方法}\label{ux6570ux636eux4e0eux65b9ux6cd5}
+
+\subsubsection{4.1 平台与语料}\label{ux5e73ux53f0ux4e0eux8bedux6599}
+
+B站（bilibili.com）是中国最大的长视频平台之一，成立于 2009 年，以同步弹幕评论层和代币化``投币''认可系统著称。不同于短视频竞争者，B站保留了长视频内容，并提供播放、点赞、投币、收藏、分享等成本不同的用户行动。截至 2024 年第三季度，B站报告平均月活跃用户为 3.48 亿 （Bilibili Inc.~2024）。本文选择 B站，是因为相较其他中文平台，B站的参与架构在设计层面更清楚地区分廉价和昂贵的用户行动。本文以公开搜索 API 稳定返回的五类计数（播放、点赞、投币、收藏、分享）作为结果变量。
+
+本文通过平台公开搜索 API 于 2026 年 5 月 24 日采集语料。搜索 API 返回非登录用户输入关键词后看到的排序列表，同时支持分页和排序控制。我们针对 28 个中文关键词（见表 1）分别发出三类排序查询：\texttt{totalrank}（综合相关性）、\texttt{pubdate}（最新发布）和 \texttt{click}（点击/播放热度），每个查询最多爬取 15 页。关键词分为五个主题簇：一般健康教育（如``健康科普''\,``医生提醒''\,``体检报告''，共 5 个关键词）、慢性病（``糖尿病''\,``高血压''\,``心脏病''\,``脂肪肝''，共 4 个关键词）、肿瘤与筛查（``癌症 早期信号''\,``HPV 疫苗''\,``肺癌 科普''，共 3 个关键词）、生活方式（``减肥 科学''\,``脱发 医生''\,``睡眠 健康''\,``饮食健康''，共 4 个关键词），以及预设标题党词干短语（如``医生提醒 千万别''\,``医生终于说了''\,``这个习惯 致癌''，共 12 个关键词，含短词变体）。标题党词干簇被有意纳入，以确保主要自变量具有足够变异；我们通过在所有主要模型中加入关键词类别固定效应，并在稳健性检验中执行 leave-one-keyword-out 分析来处理这一采样设计。
+
+{[}表 1 置于此处{]}
+
+对每个返回视频，我们采集完整元数据（\texttt{bvid}、\texttt{aid}、标题、简介、发布时间戳、时长、B站分区 \texttt{tname}、原创/转载状态）、五类互动计数（播放、点赞、投币、收藏、分享）、UP 主层面属性（\texttt{mid}、粉丝数、平台认证状态、频道签名）以及封面缩略图（JPG，本地归档）。经按 \texttt{bvid} 全局去重并以健康相关性规则过滤后，主语料包含约 9{,}484 条唯一健康科普视频。所有互动计数来自同一次横截面快照；因此，我们将 \texttt{video\_age\_days}（视频发布日至爬取日的天数）作为主要控制变量，并由该字段反推视频发布年份用于稳健性子样本划分。鉴于视觉编码成本，本文从主语料中抽取 5{,}000 条进行视觉语言模型编码，并据此构造完整建模样本（见 4.4 节）。
+
+\subsubsection{4.2 结果变量及其分布}\label{ux7ed3ux679cux53d8ux91cfux53caux5176ux5206ux5e03}
+
+本文将五类参与指标分为低成本与高成本两组。低成本参与包括播放数和点赞数：播放数是最廉价的注意力指标；点赞只要求一次点击，但仍表示轻度认可。高成本认可包括投币、收藏和分享：投币受到平台日配额限制，因而是稀缺认可；收藏表示未来再看或保存参考价值；分享要求用户把视频推荐给外部或社交网络，带有社会声誉成本。
+
+五类参与指标均为高度右偏的计数（见表 2）。在完整建模样本中，播放数均值约为 35.9 万，中位数远低于均值，说明少数爆款视频显著抬高均值。各结果的零值比例差异很大：播放 0.0\%、点赞 0.6\%、收藏 2.6\%、分享 7.8\%、投币 18.6\%。所有结果的方差均远大于均值（方差/均值之比介于约 4.3 万至 260 万之间），表明严重过度离散。因此，本文对全部五个结果使用负二项（NB）模型，而非泊松模型；其中投币的零值比例最高，单独以 hurdle 模型处理其零过程（见 4.6 节）。
+
+{[}表 2 置于此处{]}
+
+\subsubsection{4.3 视觉构念码本}\label{ux89c6ux89c9ux6784ux5ff5ux7801ux672c}
+
+本文不把视觉标题党压缩成单一指数，而是分别测量构成它的若干视觉维度，并在模型中作为各自独立的连续预测变量。视觉语言模型按 0-3 有序尺度对每张缩略图评分，本文对这些分数作标准化（z 分）后进入模型。八个视觉预测变量如下。\textbf{情感强度}（\texttt{emotion\_intensity}）指缩略图中人脸或拟人对象的戏剧化程度，从中性到高度震惊、恐惧、厌恶或痛苦。\textbf{恐惧诉求}（\texttt{fear\_appeal}）指威胁性图像的显著程度，例如身体伤害、病灶、医学器械、疼痛姿态、红色警告或异常报告。\textbf{文字覆盖强度}（\texttt{text\_overlay\_intensity}）指缩略图叠加文字在面积、对比度和语义压力上的强度。\textbf{视觉悬念}（\texttt{visual\_suspense}）指缩略图通过遮挡、指向或未完成动作制造``接下来会怎样''的程度。
+
+\textbf{信息缺口}（\texttt{info\_gap}）单独处理，因为它是标题承诺的属性而非图像属性。它测量标题和缩略图可见文案在多大程度上有意保留视频的关键答案，例如``这个习惯致癌''（哪种习惯？）、``医生终于说了''（说了什么？）。将信息缺口与图像侧线索分开，是为了避免把文本好奇机制同图像唤起机制混为一谈。
+
+\textbf{图文代表性}（\texttt{thumbnail\_title\_representativeness}）指缩略图是否准确预告标题中的核心健康承诺，按 0-3 评分：0 表示明显不相关或误导，3 表示清楚、具体地代表标题承诺。作为图文一致性的第二个、连续的测量，本文另用 Chinese-CLIP（ViT-B/16）（Yang et al.~2022）计算封面图像与标题文本嵌入之间的余弦相似度（\texttt{clip\_sim}）。\textbf{医学权威线索}（\texttt{medical\_authority\_cue}）测量白大褂、临床形象、医学器械、检查报告、机构 logo 或医院场景等``正规感''视觉符号的总体强度。
+
+\subsubsection{4.4 计算编码流程与建模样本构造}\label{ux6df7ux5408ux6807ux6ce8ux6d41ux7a0b}
+
+\textbf{视觉语言模型编码。} 本文对抽取的 5{,}000 张缩略图使用视觉语言模型 Qwen-VL-Plus（阿里云 DashScope，\texttt{qwen-vl-plus-latest}）评分。模型在单一结构化提示下运行，提示包含码本操作定义和少量提示内示例，对每张缩略图返回上述视觉维度的有序分数、整体``是否视觉标题党''的二分判定（\texttt{visual\_clickbait\_binary}）、标题党类型，以及主题相关性与置信度。原始 API 响应归档以便复现。在 5{,}000 条中，成功返回结构化编码 4{,}945 条，失败 55 条（成功率 98.9\%）。
+
+\textbf{图文相似度。} 对全部成功编码的缩略图，本文用 Chinese-CLIP（ViT-B/16）计算封面图像与标题文本之间的余弦相似度，作为连续的图文一致性测量。
+
+\textbf{建模样本构造。} 描述统计基于 4{,}945 条成功编码样本。主回归基于完整建模样本：将成功样本与 CLIP 相似度、UP 主粉丝数和视频时长合并，并要求全部建模所需字段非缺失，得到 \textbf{3{,}325 条视频，来自 1{,}503 个 UP 主}。我们采用此种完整个案策略，而不是把缺失粉丝数或 CLIP 相似度填为 0，因为后者会人为压低这些控制变量。图 1 给出从原始语料到建模样本的逐步流失。
+
+\textbf{测量效度的现状与局限。} 本文的视觉构念由视觉语言模型单独编码，尚未完成针对该模型输出的独立人工金标准复核。这是本研究当前最重要的测量局限。我们已规划在 200--500 张缩略图的分层子样本上进行双盲人工标注，并以二次加权 Cohen's \(\kappa\)（有序变量）和 Spearman's \(\rho\)（连续分数）报告人机一致性；该验证将作为后续工作补入，相应结果应据此谨慎解读（见第六节）。这一保留与计算视觉社会科学的方法共识一致：自动化视觉内容分析虽已可大规模应用，但其测量须经明确的构念效度审计 （Araujo, Lock, and van de Velde 2020；Edelmann et al.~2020；Peng, Lock, and Salah 2024）。
+
+\subsubsection{4.5 控制变量}\label{ux63a7ux5236ux53d8ux91cf}
+
+主要控制变量包括：\texttt{video\_age\_days}，即视频发布日至爬取日之间的天数，用于吸收老视频累计参与更多的偏差；UP 主粉丝数的对数（\texttt{log\_follower}），用于吸收频道规模；视频时长秒数的对数（\texttt{log\_duration}）；B站分区固定效应（按样本量阈值合并稀疏分区，详见下）；以及平台认证状态（\texttt{is\_official}）。除认证状态的二元指标外，所有连续控制变量与八个视觉预测变量在进入模型前均作标准化（z 分），以便系数在维度间可比，并以 \(\exp(\beta)\) 解释为``该维度上升一个标准差''对应的发生率比（IRR）。分区固定效应中，样本量少于 30 条的稀疏分区合并为``其他''类，以保证固定效应可估计；科学科普分区占建模样本的多数（2{,}773 / 3{,}325）。
+
+\subsubsection{4.6 分析策略}\label{ux5206ux6790ux7b56ux7565}
+
+\textbf{主模型。} 对五个计数结果中的每一个，本文拟合负二项（NB2）回归，自变量为八个标准化视觉维度，并加入上述全部控制变量与分区固定效应。鉴于完全信息 NB 极大似然在最重尾的结果（点赞、投币）上 Hessian 不可逆，本文采用 GLM 形式的 NB：先用 Cameron--Trivedi 辅助回归预估离散参数 \(\alpha\)，再以固定 \(\alpha\) 拟合 GLM，从而得到稳定的协方差矩阵。各结果的估计 \(\alpha\) 介于 1.9 与 5.2 之间，均远大于 0，强烈支持 NB 而非泊松设定。所有标准误在 UP 主（\texttt{mid}）层面作聚类稳健处理，以应对同一频道发布多个视频导致的非独立性（建模样本含 1{,}503 个聚类）。
+
+\textbf{投币的零过程。} 投币零值比例最高（18.6\%），本文以 NB hurdle 模型单独刻画其零过程：第一阶段为``是否获得任何投币''的 logit，第二阶段为正值子样本上的 NB。我们也尝试了零膨胀负二项（ZINB），但在投币这一极端计数上其 Hessian 始终不可逆、无法得到可用标准误；因此本文以 hurdle 为主，ZINB 仅作存档点估计，不据其作推断（见第六节局限）。
+
+\textbf{比较性假设与边际效应。} 为评估 H1a--H1c 的不对称，本文比较同一视觉维度在低成本结果（播放、点赞）与高成本结果（投币、收藏、分享）NB 方程中的标准化系数。本文另以计数尺度的平均边际效应（AME）报告关键维度的实质量级，其标准误与 95\% 置信区间由 UP 主层面聚类自助法（300 次重抽 \texttt{mid} 聚类）给出，而非 delta 近似。
+
+\subsubsection{4.7 稳健性检验}\label{ux7a33ux5065ux6027ux68c0ux9a8c}
+
+本文执行以下稳健性检验。（R1）限制到 2022 年之后发布的视频（发布年份由 \texttt{video\_age\_days} 反推，而非采用抓取时间戳），以处理平台机制演化（N = 2{,}851）。（R2）剔除粉丝数最高的 5\% 频道，以排除头部账号主导（N = 3{,}158）。（R3）限制到``科学科普''分区，以排除分区构成差异（N = 2{,}773）。（R4）以泊松模型作交叉检验，验证过度离散下符号与显著性的稳定性。（R5）以二分``是否视觉标题党''变量替代连续维度，检验二分判定的解释力。（R6）加入``是否视觉标题党 × 图文代表性''交互，检验代表性是否调节标题党与参与的关联。
+
+\subsubsection{4.8 关联边界与局限}\label{ux56e0ux679cux8fb9ux754cux4e0eux5c40ux9650}
+
+本文不声称视觉线索对用户参与具有因果效应。B站推荐系统同时决定哪些缩略图被推入用户视野，以及这些视频随后获得多少参与；缩略图与参与指标之间的后门路径无法仅凭观察性数据关闭。本文采取的保护性措施是全文使用关联性语言，并在 UP 主层面聚类稳健处理标准误以反映频道内非独立性。本文还存在若干局限。第一，视觉构念目前仅由视觉语言模型编码，尚未完成独立的人工金标准复核（见 4.4 节）；这是当前最重要的测量局限。第二，语料是``在健康相关关键词下被搜索 API 返回的视频''，而非``B站所有健康相关视频''，因此结果只能推广到搜索索引可见的子集，且标题党词干关键词的纳入使语料在标题党强度上有意过采样。第三，参与计数来自单次横截面快照，\texttt{video\_age\_days} 只能部分吸收累计参与偏差。第四，本文测量封面缩略图的视觉特征，而非视频本身的音视频内容。第五，NB 的离散参数 \(\alpha\) 为预估后固定的插入值，报告的标准误以 \(\alpha\) 为已知量，未传播其一阶估计不确定性；投币 hurdle 第二阶段为未截断 NB 近似。上述方法学保留应在解读相应结果时一并考虑。
+
+\subsubsection{4.9 开放科学与伦理}\label{ux9884ux6ce8ux518cux5f00ux653eux79d1ux5b66ux4e0eux4f26ux7406}
+
+码本、视觉语言模型提示词和分析代码将公开存档以便复现。语料元数据将在排除原始缩略图后归档并获得 DOI；缩略图原图受平台服务条款限制，不会重新分发，公开数据将提供图片 URL 和重新采集脚本。UP 主标识符（\texttt{mid}）在公开数据中单向哈希化，可能包含个人信息的 UP 主签名字段将脱敏。研究仅使用公开、非账号限制的平台元数据，不与用户或上传者互动。本文披露使用视觉语言模型 Qwen-VL-Plus（\texttt{qwen-vl-plus-latest}）对缩略图进行视觉编码；独立人工复核作为后续测量验证步骤（见 4.4 节）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 1：关键词分层与每个关键词样本量}\label{ux8868-1ux5173ux952eux8bcdux5206ux5c42ux4e0eux6bcfux4e2aux5173ux952eux8bcdux6837ux672cux91cf}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+主题簇 & 关键词 & N \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+一般健康教育 & 医学科普 & 435 \\
+一般健康教育 & 健康科普 & 429 \\
+一般健康教育 & 医生提醒 & 390 \\
+一般健康教育 & 体检报告 & 248 \\
+一般健康教育 & 饮食健康 & 196 \\
+一般健康教育 & 养生科普 & 180 \\
+慢性病 & 糖尿病 科普 & 180 \\
+慢性病 & 高血压 科普 & 180 \\
+慢性病 & 心脏病 科普 & 180 \\
+慢性病 & 脂肪肝 科普 & 180 \\
+慢性病 & 糖尿病（短词） & 60 \\
+慢性病 & 高血压（短词） & 20 \\
+慢性病 & 高血压 危险信号 & 6 \\
+肿瘤与筛查 & 癌症 早期信号 & 180 \\
+肿瘤与筛查 & HPV 疫苗 & 180 \\
+肿瘤与筛查 & 肺癌 科普 & 180 \\
+肿瘤与筛查 & HPV（短词） & 60 \\
+生活方式 & 减肥 科学 & 180 \\
+生活方式 & 脱发 医生 & 180 \\
+生活方式 & 睡眠 健康 & 180 \\
+生活方式 & 减肥（短词） & 60 \\
+生活方式 & 脱发（短词） & 60 \\
+标题党词干 & 医生提醒 千万别 & 180 \\
+标题党词干 & 医生终于说了 & 180 \\
+标题党词干 & 体检报告 异常 & 130 \\
+标题党词干 & 这个习惯 致癌 & 92 \\
+标题党词干 & 健康科普 千万别吃 & 18 \\
+标题党词干 & 医生提醒 致癌 & 18 \\
+\textbf{合计（该采集快照，去重前）} & --- & \textbf{5,062} \\
+\end{longtable}
+
+\textbf{注}：本表反映一次较早的关键词级采集快照中每个关键词 × 排序方式组合下检索到的唯一视频数量。此后语料经进一步扩充、按 \texttt{bvid} 全局去重并以健康相关性规则过滤，主语料规模随之扩大（约 9{,}484 条）；本文从中抽取 5{,}000 条进行视觉编码，最终建模样本为 3{,}325 条（见 4.1 与 4.4 节）。关键词主题簇在所有主要模型中通过分区固定效应间接吸收。``标题党词干''簇包含预设搜索词，用于过采样视觉标题党强度较高的视频。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 2：参与结果变量的描述性分布（成功编码样本，N = 4,945）}\label{ux8868-2ux53c2ux4e0eux7ed3ux679cux53d8ux91cfux7684ux63cfux8ff0ux6027ux5206ux5e03n-4945}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+结果变量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+均值
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+中位数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+第 25 百分位
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+第 75 百分位
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+第 95 百分位
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+零值比例
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+采用模型
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+播放（\texttt{play}） & 308,526 & 5,564 & 205 & 99,942 & 1,954,460 & 1.0 & 负二项 \\
+点赞（\texttt{like}） & 11,685 & 89 & 5 & 2,044 & 64,003 & 5.8 & 负二项 \\
+收藏（\texttt{favorites}） & 4,131 & 62 & 2 & 963 & 21,024 & 16.2 & 负二项 \\
+分享（\texttt{share}） & 1,971 & 25 & 0 & 412 & 9,030 & 25.8 & 负二项 \\
+投币（\texttt{coin}） & 2,850 & 6 & 0 & 141 & 7,893 & 37.8 & 负二项 + hurdle \\
+\end{longtable}
+
+\textbf{注}：N = 4{,}945 条成功编码视频。各分布均明显右偏，方差远大于均值，故采用负二项模型。表中``零值比例''为成功编码样本中该结果等于 0 的视频比例；在最终建模样本（N = 3{,}325，剔除了缺失粉丝数或 CLIP 相似度的视频，这部分视频参与普遍更低）中，零值比例相应下降为播放 0.0\%、点赞 0.6\%、收藏 2.6\%、分享 7.8\%、投币 18.6\%。投币零值比例最高，故在负二项之外另以 hurdle 模型刻画其零过程。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 结果}\label{ux7ed3ux679c}
+
+\subsubsection{5.1 简单二分判定不是有用的解释单位}\label{ux4e8cux5206}
+
+我们首先检验最朴素的设定：视频是否被判定为视觉标题党。在视觉语言模型的派生规则下，建模样本中约八成视频被判为视觉标题党，说明``是否标题党''几乎是缩略图设计的默认状态。表 3 报告以二分变量预测五个参与结果的负二项回归。在控制粉丝数、时长、视频年龄、认证状态和分区固定效应、并在 UP 主层面聚类标准误后，\textbf{二分视觉标题党变量对全部五个结果均不显著}（播放 \(\beta=-0.053,\ p=.74\)；点赞 \(\beta=-0.234,\ p=.23\)；投币 \(\beta=-0.117,\ p=.57\)；收藏 \(\beta=-0.085,\ p=.62\)；分享 \(\beta=-0.287,\ p=.11\)）。换言之，仅知道一条视频``是不是标题党''，无助于解释它获得多少参与。这一空结果是后续分析的出发点：解释力不在二分判定，而在构成标题党的具体视觉机制。
+
+{[}表 3 置于此处{]}
+
+\subsubsection{5.2 视觉机制与参与的分化：情感购买注意力，权威受到惩罚}\label{ux89c6ux89c9ux673aux5236}
+
+表 4 报告以八个标准化视觉维度为自变量的负二项主模型。系数以发生率比 \(\exp(\beta)\) 解读，即该维度上升一个标准差对应的参与量倍数。结果呈现清晰的分化结构。
+
+\textbf{情感强度只购买低成本注意力。} 情感强度在低成本结果上显著正向（播放 \(\beta=0.160,\ p<.001\)；点赞 \(\beta=0.117,\ p<.05\)），而在三个高成本认可结果上均不显著（投币 \(p=.12\)；收藏 \(p=.54\)；分享 \(p=.47\)）。这正是``购买注意力，而非购买认可''的直接证据，支持 H1a 并与 H1b 的不对称预测一致：缩略图越情绪化，越能换来播放和点赞，但换不来投币、收藏或分享。计数尺度的平均边际效应进一步说明量级：情感强度每上升一个标准差，平均对应约 +57{,}700 次播放（95\% CI [30{,}800, 100{,}900]）和 +1{,}600 次点赞（95\% CI [280, 3{,}700]）。
+
+\textbf{医学权威线索受到系统性参与惩罚。} 与基于信号理论的 H4 预期相反，医学权威线索在四个结果上显著负向（播放 \(\beta=-0.302,\ p<.001\)；点赞 \(\beta=-0.247,\ p<.01\)；收藏 \(\beta=-0.256,\ p<.001\)；分享 \(\beta=-0.173,\ p<.05\)），仅投币不显著。白大褂、机构、检查报告等``正规感''符号不仅没有带来更高的高成本认可，反而与更低的平台参与相关联。其量级也很大：权威线索每上升一个标准差，平均对应约 \(-108{,}900\) 次播放（95\% CI [\(-165{,}200\), \(-64{,}800\)]）。因此本文拒绝 H4，并把该负向关联作为核心实质发现。
+
+\textbf{图文一致性整体上与更低参与相关联。} 图文代表性在播放（\(\beta=-0.135,\ p<.01\)）和点赞（\(\beta=-0.113,\ p<.05\)）上显著负向；连续的 CLIP 图文相似度在点赞上显著负向（\(\beta=-0.167,\ p<.05\)），在投币、收藏、分享上为负且边缘显著。两个独立测量给出一致方向：缩略图越规范地代表标题、越与标题语义一致，参与反而越低。这与处理流畅性传统的简单预测（一致即更好）相悖，更接近好奇-不一致传统，因而本文不支持 H2/H3 所设的``代表性提升高成本认可''方向。
+
+\textbf{其余维度。} 视觉悬念呈弱正向（播放 \(p<.05\)，点赞与分享边缘显著）；恐惧诉求仅对播放边缘正向；文字覆盖强度与信息缺口在全部结果上均不显著。文字覆盖与信息缺口的空结果尤其值得注意：它反驳了``满屏大字''或``留悬念文案''本身机械地驱动参与的直觉，因而也提示把视觉标题党简化为``大字+悬念''的判定并不可靠（呼应 5.1 节）。
+
+{[}表 4 置于此处{]}
+
+\subsubsection{5.3 投币的零过程}\label{ux6295ux5e01}
+
+投币零值比例最高，本文以 hurdle 模型分解其零过程。第一阶段（是否获得任何投币）的 logit 显示，\textbf{医学权威线索显著降低视频获得任何投币的概率}（OR \(=0.80,\ p<.001\)），情感强度边缘提高该概率（OR \(=1.14,\ p=.05\)）。这说明权威线索的负向关联部分发生在``能否跨过零''这一环节。第二阶段（正投币子样本上的 NB）的协方差矩阵在该极端计数上不可逆，故仅作方向性参考，不据其作推断（见 5.5 与第六节）。
+
+{[}表 5 置于此处{]}
+
+\subsubsection{5.4 代表性不调节二分标题党}\label{ux4ea4ux4e92}
+
+为检验代表性是否调节标题党与参与的关联，本文加入``是否视觉标题党 × 图文代表性''交互。该交互项在全部五个结果上均不显著（\(p\) 介于 .24 与 .93）。结合 5.1 节，二分标题党既无主效应，其与代表性的交互也不显著；代表性的作用体现在它自身的负向主效应上（5.2 节），而非作为标题党的调节变量。
+
+\subsubsection{5.5 稳健性}\label{ux7a33ux5065ux6027}
+
+核心发现在三个子样本中保持稳定（表 6）。限制到 2022 年后样本（N = 2{,}851）、剔除粉丝前 5\% 的头部频道（N = 3{,}158）、以及只保留科学科普分区（N = 2{,}773），情感强度对播放的正向关联与权威线索对播放、点赞的负向关联在符号和显著性上均一致。以泊松模型作交叉检验，符号一致、幅度略小，印证负二项是过度离散下更合适的设定。综合来看，``情感购买注意力、权威受惩罚''的结构不是由特定时间窗、头部账号或分区构成所驱动的假象。
+
+需要并列说明的方法学保留有三：其一，视觉构念目前仅由视觉语言模型编码，尚未完成独立人工金标准复核，故上述维度系数应在测量效度待验证的前提下解读；其二，负二项离散参数为预估后固定的插入值，报告的标准误以其为已知量；其三，投币 hurdle 第二阶段为未截断 NB 近似，且 ZINB 因数值不收敛仅作存档。这些保留不改变二分判定无解释力、以及情感与权威两条主线的方向，但提示读者审慎对待精确系数值。
+
+{[}表 6 置于此处{]}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 讨论}\label{ux8ba8ux8bba}
+
+本文以 3{,}325 条 B站健康科普视频，检验视觉标题党线索如何与不同成本层级的用户参与相关联，并得到三点彼此印证的发现。
+
+第一，\textbf{解释单位应是视觉机制，而非二分标题党}。``是否标题党''在控制后对所有参与结果都不显著，而把它分解为可分维度后，结构立刻显现。这一方法论结论对计算传播研究有直接意义：把多模态标题党压缩成单一标签，会同时丢失测量信息与理论信息 （Lu and Shen 2023；Al-Ali and Hamzeh 2024）。
+
+第二，\textbf{情感强度购买注意力，而非购买认可}。情感强度只在播放和点赞上正向，在投币、收藏、分享上归于不显著。这与读者端标题党研究中``点击与下游认可脱钩''的不对称相符 （Vultee et al.~2022；Shin, DeFelice, and Kim 2025），并把这一不对称从文字标题扩展到视觉缩略图、从态度测量扩展到平台原生的成本梯度行为。说服知识模型为这种脱钩提供了概念语言：观看者可能在被高唤起线索吸引点击的同时，保留那些需要付出真实成本的认可信号 （Isaac 2025）。
+
+第三，\textbf{``正规感''视觉受到参与惩罚}。医学权威线索与图文一致性整体上与更低参与相关联，与基于信号理论的乐观预期相反。一个与数据一致的解读是：在以注意力为奖励逻辑的平台环境中，规范、克制、图文高度一致的健康传播呈现，在与情绪化、低代表性、注意力导向的包装竞争曝光时处于劣势。这一解读须谨慎对待——本文为观察性设计，权威线索与参与之间可能存在我们未观测的混杂（例如机构账号的发布与运营策略）。但即便作为关联事实，它对健康科普实践也具有提示意义：把内容做得更``正规''，未必能在平台参与上获得回报。
+
+这些发现应在以下边界内理解。本文最重要的保留是测量效度：视觉构念尚未经独立人工复核，这是后续工作的首要任务（计划在 200--500 张缩略图上做双盲人工标注并报告人机一致性）。其次，语料来自搜索 API 返回且经标题党词干过采样的子集，外推范围受限；参与计数为单次快照；本文只测缩略图而非视频内容；负二项离散参数为固定插入值、投币零过程的精确推断受限。未来研究可在完成测量验证后，进一步引入视频内容特征、纵向参与轨迹，以及更强的混杂控制策略，以检验本文关联结构的稳健性与机制。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 3：二分视觉标题党的负二项回归（UP 主聚类稳健标准误）}\label{ux8868-3}
+
+\begin{longtable}[]{@{}lrrrl@{}}
+\toprule\noalign{}
+结果 & \(\beta\) & 稳健 SE & \(p\) & 显著性 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+播放 & \(-0.053\) & 0.159 & .738 &  \\
+点赞 & \(-0.234\) & 0.193 & .226 &  \\
+投币 & \(-0.117\) & 0.206 & .572 &  \\
+收藏 & \(-0.085\) & 0.171 & .619 &  \\
+分享 & \(-0.287\) & 0.180 & .111 &  \\
+\end{longtable}
+
+\textbf{注}：N = 3{,}325，UP 主聚类数 = 1{,}503。各行为单独的负二项回归，自变量含二分视觉标题党与 CLIP 图文相似度，控制认证状态、log 粉丝数、log 时长、log 视频年龄与分区固定效应。系数为对数计数尺度。无系数显著（\(p<.05\)）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 4：视觉维度的负二项主模型（系数为 beta；UP 主聚类稳健标准误）}\label{ux8868-4}
+
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+视觉维度（z 分） & 播放 & 点赞 & 投币 & 收藏 & 分享 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+情感强度 & 0.160*** & 0.117* & 0.098 & 0.038 & 0.042 \\
+恐惧诉求 & 0.095+ & \(-0.019\) & \(-0.068\) & \(-0.082\) & \(-0.053\) \\
+文字覆盖强度 & \(-0.023\) & \(-0.047\) & 0.051 & 0.045 & \(-0.030\) \\
+视觉悬念 & 0.066* & 0.064+ & 0.008 & 0.030 & 0.083+ \\
+信息缺口 & \(-0.038\) & \(-0.046\) & \(-0.019\) & \(-0.007\) & \(-0.010\) \\
+图文代表性 & \(-0.135\)** & \(-0.113\)* & \(-0.073\) & \(-0.097\) & \(-0.007\) \\
+医学权威线索 & \(-0.302\)*** & \(-0.247\)** & \(-0.110\) & \(-0.256\)*** & \(-0.173\)* \\
+CLIP 图文相似度 & \(-0.082\) & \(-0.167\)* & \(-0.118\)+ & \(-0.112\)+ & \(-0.144\)+ \\
+\end{longtable}
+
+\textbf{注}：N = 3{,}325，UP 主聚类数 = 1{,}503。每列为一个负二项回归，同时纳入八个标准化视觉维度并控制认证状态、log 粉丝数、log 时长、log 视频年龄与分区固定效应。系数为对数计数尺度，\(\exp(\beta)\) 为发生率比。\(+\,p<.10\)，\(*\,p<.05\)，\(**\,p<.01\)，\(***\,p<.001\)。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 5：投币的 hurdle 模型（第一阶段 logit）}\label{ux8868-5}
+
+\begin{longtable}[]{@{}lrrrl@{}}
+\toprule\noalign{}
+视觉维度（z 分） & OR & \(\beta\) & \(p\) & 显著性 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+情感强度 & 1.14 & 0.129 & .051 & + \\
+恐惧诉求 & 1.10 & 0.095 & .166 &  \\
+文字覆盖强度 & 0.93 & \(-0.076\) & .351 &  \\
+视觉悬念 & 0.98 & \(-0.016\) & .743 &  \\
+信息缺口 & 0.93 & \(-0.077\) & .182 &  \\
+图文代表性 & 0.97 & \(-0.029\) & .609 &  \\
+医学权威线索 & 0.80 & \(-0.229\) & \(<.001\) & *** \\
+CLIP 图文相似度 & 1.06 & 0.060 & .373 &  \\
+\end{longtable}
+
+\textbf{注}：第一阶段为``是否获得任何投币''的 logit（N = 3{,}325，UP 主聚类稳健 SE）。OR 为优势比。第二阶段（正投币子样本上的负二项）协方差矩阵在该极端计数上不可逆，仅作方向性参考，未列入推断。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{表 6：稳健性——情感强度与权威线索在子样本中的负二项系数}\label{ux8868-6}
+
+\begin{longtable}[]{@{}llrrl@{}}
+\toprule\noalign{}
+子样本 & 结果 & 情感强度 \(\beta\) & 权威线索 \(\beta\) &  \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2022 年后（N=2,851） & 播放 & 0.160** & \(-0.358\)*** &  \\
+2022 年后（N=2,851） & 点赞 & 0.100+ & \(-0.246\)** &  \\
+剔除粉丝前 5\%（N=3,158） & 播放 & 0.173*** & \(-0.294\)*** &  \\
+剔除粉丝前 5\%（N=3,158） & 点赞 & 0.127* & \(-0.228\)** &  \\
+仅科学科普（N=2,773） & 播放 & 0.159** & \(-0.306\)*** &  \\
+仅科学科普（N=2,773） & 点赞 & 0.094 & \(-0.228\)** &  \\
+\end{longtable}
+
+\textbf{注}：各单元格为对应子样本上的负二项系数（UP 主聚类稳健 SE），模型设定同表 4。\(+\,p<.10\)，\(*\,p<.05\)，\(**\,p<.01\)，\(***\,p<.001\)。情感强度对播放的正向、权威线索对播放与点赞的负向在三个子样本中一致。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+Al-Ali, M.N. and S.M. Hamzeh. 2024. ``Extra Cues Extra Views: A Multimodal Detection of Arabic Clickbait Thumbnail Verbo-Visual Cues.'' \emph{Discourse \& Communication}.
+
+
+Araujo, T., I. Lock, and B. van de Velde. 2020. ``Automated Visual Content Analysis (AVCA) in Communication Research: A Protocol for Large Scale Image Classification with Pre-Trained Computer Vision Models.'' \emph{Communication Methods and Measures} 14(4): 239-265.
+
+Bilibili Inc.~2024. \emph{Bilibili Inc.~Reports Third Quarter 2024 Financial Results}. Form 6-K filed with the U.S. Securities and Exchange Commission, November 14, 2024. Retrieved May 25, 2026 (https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany\&CIK=0001723690).
+
+Bird, R.B. and E.A. Smith. 2005. ``Signaling Theory, Strategic Interaction, and Symbolic Capital.'' \emph{Current Anthropology}.
+
+Blom, J.N. and K.R. Hansen. 2015. ``Click Bait: Forward-Reference as Lure in Online News Headlines.'' \emph{Journal of Pragmatics} 76: 87-100.
+
+Bravo, I., K. Prasse, S. Walter, S. O'Neill, and M. Keuper. 2025. ``Global Dynamics of Climate Change Imagery: Emotional and Engagement Effects Across Visual Frames on Twitter/X.'' \emph{Science Communication}.
+
+Cao, J., X. Li, and L. Zhang. 2025. ``Is Relevancy Everything? A Deep-Learning Approach to Understand the Effect of Image-Text Congruence.'' \emph{Management Science}.
+
+Chen, J. 2025. ``Understanding Danmaku and Comment Interactions Through Content Features and Video Popularity.'' \emph{Procedia Computer Science}.
+
+Donath, J. 2007. ``Signals in Social Supernets.'' \emph{Journal of Computer-Mediated Communication}.
+
+Dong, W., Y. Liu, W. Wang, L. Jiang, and Y. Yi. 2025. ``The Impact of Danmaku Ritual Types on User Digital Engagement in Video-Based Social Media: The Moderating Role of Influencer Types and Domains.'' \emph{Psychology \& Marketing}.
+
+Edelmann, A., T. Wolff, D. Montagne, and C.A. Bail. 2020. ``Computational Social Science and Sociology.'' \emph{Annual Review of Sociology}.
+
+Geise, S. and Y. Xu. 2025. ``Effects of Visual Framing in Multimodal Media Environments: A Systematic Review of Studies Between 1979 and 2023.'' \emph{Journalism \& Mass Communication Quarterly}.
+
+Guo, L., Y. Wang, P. Li, Y. Wang, and Y. Li. 2026. ``The Impact of Headline Characteristics on Clicks: A Case Study of a Chinese Local Medium.'' \emph{Journalism Practice} 20(4): 1427-1455.
+
+Heley, K., A. Gaysynsky, and A.J. King. 2022. ``Missing the Bigger Picture: The Need for More Research on Visual Health Misinformation.'' \emph{Science Communication} 44(4): 514-527.
+
+Isaac, M.S. 2025. ``Thirty Years of Persuasion Knowledge Research: From Demonstrating Effects to Building Theory to Increasing Applicability.'' \emph{Consumer Psychology Review}.
+
+Jones, C.L., J.D. Jensen, C.L. Scherr, N.R. Brown, K. Christy, and J. Weaver. 2015. ``The Health Belief Model as an Explanatory Framework in Communication Research: Exploring Parallel, Serial, and Moderated Mediation.'' \emph{Health Communication} 30(6): 566-576.
+
+Keib, K., C. Espina, Y.-I. Lee, B.W. Wojdynski, D. Choi, and H. Bang. 2018. ``Picture This: The Influence of Emotionally Valenced Images on Attention, Selection, and Sharing of Social Media News.'' \emph{Media Psychology} 21(2): 202-221.
+
+Khawar, S. and M. Boukes. 2025. ``Analyzing Sensationalism in News on Twitter (X): Clickbait Journalism by Legacy vs.~Online-Native Outlets and the Consequences for User Engagement.'' \emph{Digital Journalism} 13(8): 1482-1502.
+
+King, A.J. and A.J. Lazard. 2020. ``Advancing Visual Health Communication Research to Improve Infodemic Response.'' \emph{Health Communication} 35(14): 1723-1728.
+
+Klein, E.G., K. Roberts, J. Manganello, R. McAdams, and L. McKenzie. 2020. ``When Social Media Images and Messages Don't Match: Attention to Text versus Imagery to Effectively Convey Safety Information on Social Media.'' \emph{Journal of Health Communication} 25(11): 879-884.
+
+Kuiken, J., A. Schuth, M. Spitters, and M. Marx. 2017. ``Effective Headlines of Newspaper Articles in a Digital Environment.'' \emph{Digital Journalism} 5(10): 1300-1314.
+
+Lang, A. 2000. ``The Limited Capacity Model of Mediated Message Processing.'' \emph{Journal of Communication} 50(1): 46-70.
+
+Li, Y. and Y. Xie. 2020. ``Is a Picture Worth a Thousand Words? An Empirical Study of Image Content and Social Media Engagement.'' \emph{Journal of Marketing Research}.
+
+Limpijankit, M. and J.R. Kender. 2025. ``Detecting Cultural Differences in News Video Thumbnails via Computational Aesthetics.''
+
+Liu, A.K.C. and O. Kuru. 2025. ``Understanding the Effects of Visual Misinformation: A Systematic Review of 10 Years (2014-2024).'' \emph{Mass Communication and Society}.
+
+Liu, S., J. Xu, Z. Zhao, and X. Li. 2023. ``Factors Affecting Trust in Chinese Digital Journalism: Approach Based on Folk Theories.'' \emph{Media and Communication} 11(4): 355-366.
+
+Lu, Y. and J. Pan. 2021. ``Capturing Clicks: How the Chinese Government Uses Clickbait to Compete for Visibility.'' \emph{Political Communication}.
+
+Lu, Y. and J. Pan. 2022. ``The Pervasive Presence of Chinese Government Content on Douyin Trending Videos.'' \emph{Computational Communication Research}.
+
+Lu, Y. and C. Shen. 2023. ``Unpacking Multimodal Fact-Checking: Features and Engagement of Fact-Checking Videos on Chinese TikTok (Douyin).'' \emph{Social Media + Society}.
+
+Metzger, M.J., A.J. Flanagin, and B.R. Medders. 2010. ``Social and Heuristic Approaches to Credibility Evaluation Online.'' \emph{Journal of Communication} 60(3): 413-439.
+
+Molyneux, L. and M. Coddington. 2020. ``Aggregation, Clickbait and Their Effect on Perceptions of Journalistic Credibility and Quality.'' \emph{Journalism Practice} 14(4): 429-446.
+
+Munger, K. 2020. ``All the News That's Fit to Click: The Economics of Clickbait Media.'' \emph{Political Communication}.
+
+Naveed, W., Z.A. Uzmi, and Z.A. Qazi. 2025. ``ThumbnailTruth: A Multi-Modal LLM Approach for Detecting Misleading YouTube Thumbnails Across Diverse Cultural Settings.''
+
+
+Peng, Y., I. Lock, and A.A. Salah. 2024. ``Automated Visual Analysis for the Study of Social Media Effects: Opportunities, Approaches, and Challenges.'' \emph{Communication Methods and Measures}.
+
+Powell, T.E., H.G. Boomgaarden, K. De Swert, and C.H. de Vreese. 2015. ``A Clearer Picture: The Contribution of Visuals and Text to Framing Effects.'' \emph{Journal of Communication}.
+
+Scott, K. 2021. ``You Won't Believe What's in This Paper! Clickbait, Relevance and the Curiosity Gap.'' \emph{Journal of Pragmatics} 175: 53-66.
+
+Shin, J., C. DeFelice, and S. Kim. 2025. ``Emotion Sells: Rage Bait vs.~Information Bait in Clickbait News Headlines on Social Media.'' \emph{Digital Journalism}.
+
+Spence, M. 1973. ``Job Market Signaling.'' \emph{Quarterly Journal of Economics}.
+
+Valkenburg, P.M. and J. Peter. 2013. ``The Differential Susceptibility to Media Effects Model.'' \emph{Journal of Communication} 63(2): 221-243.
+
+
+Vultee, F., G.S. Burgess, D. Frazier, and K. Mesmer. 2022. ``Here's What to Know About Clickbait: Effects of Image, Headline and Editing on Audience Attitudes.'' \emph{Journalism Practice}.
+
+Wang, Y., B. Hu, C. Tang, and X. Yang. 2025. ``Decoding Clickbait: The Impact of Clickbait Types and Structures on Cognitive and Emotional Responses in Online Interactions.'' \emph{Cyberpsychology, Behavior \& Social Networking}.
+
+Xu, Z., M. Laffidy, and L. Ellis. 2023. ``Clickbait for Climate Change: Comparing Emotions in Headlines and Full-Texts and Their Engagement.'' \emph{Information, Communication \& Society} 26(10): 1915-1932.
+
+Yang, A., J. Pan, J. Lin, R. Men, Y. Zhang, J. Zhou, and C. Zhou. 2022. ``Chinese CLIP: Contrastive Vision-Language Pretraining in Chinese.''
+
+Yoon, Y., S. Yoon, and K. Park. 2024. ``Assessing News Thumbnail Representativeness: Counterfactual Text Can Enhance the Cross-Modal Matching Ability.'' \emph{Findings of the Association for Computational Linguistics: ACL 2024}.
+
+Zhang, X. and S. Zhou. 2019. ``Clicking Health Risk Messages on Social Media: Moderated Mediation Paths Through Perceived Threat, Perceived Efficacy, and Fear Arousal.'' \emph{Health Communication} 34(11): 1359-1368.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\end{document}

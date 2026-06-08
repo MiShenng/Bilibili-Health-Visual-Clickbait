@@ -1,4 +1,4 @@
-# Overview
+# Bilibili Health Visual Clickbait
 
 This repository contains code and materials for a research project on visual clickbait and stratified user engagement in health-related videos on China’s Bilibili.
 
@@ -27,7 +27,7 @@ The dataset includes:
 
 After deduplication and topical relevance screening, the final sample contains 22,323 valid video entries.
 
-Due to platform policies, copyright restrictions, and ethical considerations, raw platform data, original thumbnail images, and row-level metadata containing identifiable platform information are not publicly released in this repository. The repository includes processed feature tables, aggregate result tables, analysis scripts, and figures for academic documentation and methodological transparency.
+Due to platform policies, copyright restrictions, and ethical considerations, raw platform data, original thumbnail images, and row-level metadata containing identifiable platform information are not publicly released in this repository. The repository includes codebooks, processing reports, aggregate result tables, analysis scripts, and manuscript materials for academic documentation and methodological transparency.
 
 ## Method
 
@@ -46,29 +46,26 @@ Finally, the project conducts regression analysis after standardizing key variab
 ## Repository Structure
 
 ```text
-
 .
 ├── README.md
+├── .gitignore
 ├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── annotations/
+│   ├── raw/              # public note only; raw platform data excluded
+│   ├── processed/        # processing and audit reports
+│   └── annotations/      # visual-clickbait codebooks
 ├── scripts/
-│   ├── crawler/
-│   ├── preprocessing/
-│   ├── visual_analysis/
-│   ├── text_image_similarity/
+│   ├── crawler/          # Bilibili retrieval and thumbnail utilities
+│   ├── preprocessing/    # merge, audit, and health-rule filters
+│   ├── visual_annotation/
 │   └── regression_analysis/
 ├── results/
 │   ├── tables/
-│   └── figures/
 └── docs/
-    └── manuscript/
-        ├── main.tex
-        ├── body.tex
-        ├── references.bib
-        ├── charts/
-        └── media/
+    ├── manuscript/
+    ├── research_design/
+    ├── literature_review/
+    ├── project_notes/
+    └── references/
 ```
 
 ## Notes

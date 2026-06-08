@@ -1,0 +1,27 @@
+# Broad health-science seeds
+健康科普
+医学科普
+医生提醒
+体检报告
+饮食健康
+
+# Risk-promise seeds
+健康科普 千万别吃
+医生提醒 致癌
+高血压 危险信号
+癌症 早期信号
+饮食健康 警惕
+
+# Remedy-promise seeds
+糖尿病 逆转 医生
+减肥 一个方法
+脱发 医生 真相
+HPV 误区
+中医养生 千万别
+
+# Evidence/authority-promise seeds
+研究发现 健康
+医生终于说 真相
+体检报告 医生说
+论文 健康科普
+白大褂 健康科普
