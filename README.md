@@ -45,7 +45,8 @@ Finally, the project conducts regression analysis after standardizing key variab
 
 ## Repository Structure
 
-、、、text
+```text
+
 .
 ├── README.md
 ├── data/
@@ -68,7 +69,7 @@ Finally, the project conducts regression analysis after standardizing key variab
         ├── references.bib
         ├── charts/
         └── media/
-、、、
+```
 
 ## Notes
 
